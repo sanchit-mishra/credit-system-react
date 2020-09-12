@@ -16,9 +16,9 @@ class Dashboard extends Component {
                 <FontAwesomeIcon icon="calendar-check" />
               </h5>
               <div class="moreinfo">
-                <a href="">
+                <Link to="#">
                   More Info <FontAwesomeIcon icon="info-circle" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -44,9 +44,9 @@ class Dashboard extends Component {
                 Student <FontAwesomeIcon icon="user-graduate" />
               </h5>
               <div class="moreinfo">
-                <a href="studentdashboard.html">
+                <Link to="#">
                   More Info <FontAwesomeIcon icon="info-circle" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -58,9 +58,9 @@ class Dashboard extends Component {
                 Branch <FontAwesomeIcon icon="award" />
               </h5>
               <div class="moreinfo">
-                <a href="branch.html">
+                <Link to="/branchDashboard">
                   More Info <FontAwesomeIcon icon="info-circle" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

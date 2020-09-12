@@ -66,10 +66,10 @@ class AddFaculty extends Component {
                 value={this.state.branch}
                 onChange={this.onChange}
               >
-                <option value="">Select Branch</option>
+                <option value={0}>Select Branch</option>
                 {/* <!--this list will come from backend from branch table. Given data is for demo--> */}
-                <option value="0">Mechanical Engineering</option>
-                <option value="1">Computer Engineering</option>
+                <option value={1}>Electronics Engineering</option>
+                <option value={2}>Computer Engineering</option>
               </select>
             </div>
           </div>

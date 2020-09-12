@@ -3,6 +3,7 @@ import { GET_ERROR, GET_FACULTIES } from "./types";
 
 export const addFaculty = (faculty, history) => async (dispatch) => {
   try {
+    console.log(faculty);
     await axios.post("/faculty", faculty);
     //history.push("/facultyDashboard");
     dispatch({

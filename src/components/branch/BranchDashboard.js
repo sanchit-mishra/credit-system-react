@@ -1,63 +1,52 @@
 import React, { Component } from "react";
+import { getBranches } from "../../actions/branchAction";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import AddBranch from "./AddBranch";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import BranchTable from "./BranchTable";
 
 class BranchDashboard extends Component {
+  componentDidMount() {
+    this.props.getBranches();
+  }
   render() {
+    const { branches } = this.props.branch;
+    const BranchTableDisplay = () => {
+      return (
+        <div>
+          {branches.map((branch) => (
+            <BranchTable key={branch.id} branch={branch} />
+          ))}
+        </div>
+      );
+    };
+
     return (
-      <div class="container">
+      <div className="container">
         <h4>Branch</h4>
         <br />
         <AddBranch />
-        <hr size="2" />
         <br />
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Branch Name</th>
-                <td></td>
-                <td></td>
-              </tr>
-            </thead>
-            <tr>
-              <td>Computer Engineering</td>
-              <td>
-                <FontAwesomeIcon
-                  icon="pencil-alt"
-                  id="editbtn"
-                  title="Edit"
-                ></FontAwesomeIcon>
-              </td>
-              <td>
-                <FontAwesomeIcon icon="trash" id="deletebtn" title="Delete" />
-              </td>
-            </tr>
-
-            <tr>
-              <td>Mechanical Engineering</td>
-
-              <td>
-                <FontAwesomeIcon icon="pencil-alt" />
-              </td>
-              <td>
-                <FontAwesomeIcon icon="trash" id="deletebtn" />
-              </td>
-            </tr>
-            <tr>
-              <td>Electrical Engineering</td>
-              <td>
-                <FontAwesomeIcon icon="pencil-alt" />
-              </td>
-              <td>
-                <FontAwesomeIcon icon="trash" id="deletebtn" />
-              </td>
-            </tr>
-          </table>
-        </div>
+        <thead>
+          <tr>
+            <th>Branch Name</th>
+            <td></td>
+            <td></td>
+          </tr>
+        </thead>
+        <BranchTableDisplay />
       </div>
     );
   }
 }
 
-export default BranchDashboard;
+BranchDashboard.propTypes = {
+  branch: PropTypes.object.isRequired,
+  getBranches: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  branch: state.branch,
+});
+
+export default connect(mapStateToProps, { getBranches })(BranchDashboard);
