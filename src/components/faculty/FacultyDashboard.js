@@ -14,7 +14,7 @@ class FacultyDashboard extends Component {
         {/* <!--BUTTON TO ADD --> */}
         <Link to="/addFaculty">
           <button className="btn btn-default" id="addBranch">
-            Add Faculty <span class="fa fa-plus"></span>
+            Add Faculty <FontAwesomeIcon icon="plus" />
           </button>
         </Link>
 
@@ -65,12 +65,17 @@ class FacultyDashboard extends Component {
               <td>Computer Engineering</td>
               <td>demo@example.com</td>
               <td>
-                <Link to="editfaculty.html">
+                <Link to="/updateFaculty">
                   <span
                     id="editbtn"
                     className="fa fa-pencil"
                     title="Edit"
                   ></span>
+                  <FontAwesomeIcon
+                    icon="pencil-alt"
+                    id="editbtn"
+                    title="Edit"
+                  />
                 </Link>
               </td>
               <td>
@@ -79,6 +84,7 @@ class FacultyDashboard extends Component {
                   className="fa fa-trash-o"
                   title="Delete"
                 ></span>
+                <FontAwesomeIcon icon="trash" />
               </td>
             </tr>
 

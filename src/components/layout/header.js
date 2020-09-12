@@ -1,35 +1,24 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Header extends Component {
   render() {
     return (
-      <div className="container">
-        <div className="header" id="header">
-          <Link to="admindashboard.html" className="logo">
-            <b>Internship Portal</b>
-          </Link>
-          <Link to="/home" className="active">
-            Home
-          </Link>
-          <Link to="/news">Branch</Link>
-          <Link to="/contact">Degree</Link>
-          <Link to="/facultydashboard.html">Faculty</Link>
-          <Link to="/about">Student</Link>
-          <Link to="/about">Activity</Link>
+      <div className="header" id="header">
+        <Link to="/" className="logo">
+          <b>Internship Portal</b>
+        </Link>
+        <Link to="/">Home</Link>
+        <Link to="/branchDashboard">Branch</Link>
+        <Link to="/degreeDashboard">Degree</Link>
+        <Link to="/facultyDashboard">Faculty</Link>
+        <a href="studentdashboard.html">Student</a>
+        <a href="activitydashboard.html">Activity</a>
 
-          <Link>
-            Hello,<b> Admin !</b>
-          </Link>
-          {/* <Link
-            href="javascript:void(0);"
-            className="icon"
-            onclick="myFunction()"
-          >
-            <FontAwesomeIcon icon="bars" />
-          </Link> */}
-        </div>
+        {/*<a style="float: right">Hello,<b> Admin !</b></a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+    </a> */}
       </div>
     );
   }

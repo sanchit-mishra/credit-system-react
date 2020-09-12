@@ -10,6 +10,7 @@ import {
   faBars,
   faPlus,
   faPencilAlt,
+  faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -22,5 +23,6 @@ library.add(
   faGraduationCap,
   faBars,
   faPlus,
-  faPencilAlt
+  faPencilAlt,
+  faTrash
 );

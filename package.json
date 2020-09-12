@@ -39,6 +39,8 @@
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/react-fontawesome": "^0.1.11"
+    "@fortawesome/react-fontawesome": "^0.1.11",
+    "axios": "^0.20.0",
+    "prop-types": "^15.7.2"
   }
 }
