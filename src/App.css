@@ -117,7 +117,8 @@ a.userWelcome {
 
 #addBranch,
 #addStudent,
-#addDegree {
+#addDegree,
+#addStudent {
   background-color: #61b7a2;
   color: white;
   outline: none;
@@ -126,7 +127,7 @@ a.userWelcome {
 
 #addBranch:hover,
 #addStudent:hover,
-#addDegree:hover {
+#addDegree:hover #addStudent:hover {
   background-color: #47796b;
 }
 

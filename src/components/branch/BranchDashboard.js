@@ -11,15 +11,6 @@ class BranchDashboard extends Component {
   }
   render() {
     const { branches } = this.props.branch;
-    const BranchTableDisplay = () => {
-      return (
-        <div>
-          {branches.map((branch) => (
-            <BranchTable key={branch.id} branch={branch} />
-          ))}
-        </div>
-      );
-    };
 
     return (
       <div className="container">
@@ -27,14 +18,8 @@ class BranchDashboard extends Component {
         <br />
         <AddBranch />
         <br />
-        <thead>
-          <tr>
-            <th>Branch Name</th>
-            <td></td>
-            <td></td>
-          </tr>
-        </thead>
-        <BranchTableDisplay />
+
+        <BranchTable branches={branches} />
       </div>
     );
   }

@@ -23,7 +23,7 @@ function App() {
           {/* Faculty Use Route */}
           <Route exact path="/facultyDashboard" component={FacultyDashboard} />
           <Route exact path="/addFaculty" component={AddFaculty} />
-          <Route exact path="/updateFaculty" component={UpdateFaculty} />
+          <Route exact path="/updateFaculty/:id" component={UpdateFaculty} />
           {/* Degree Use Route */}
           <Route exact path="/degreeDashboard" component={DegreeDashboard} />
           {/* Branch Use Route */}

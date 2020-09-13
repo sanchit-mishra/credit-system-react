@@ -9,7 +9,7 @@ class AddBranch extends Component {
     super();
 
     this.state = {
-      branch: "",
+      branchName: "",
     };
     this.onChange = this.onChange.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -22,9 +22,9 @@ class AddBranch extends Component {
   onClick(e) {
     e.preventDefault();
     const newBranch = {
-      branch: this.state.branch,
+      branchName: this.state.branchName,
     };
-    console.log(newBranch);
+    //console.log(newBranch);
     this.props.addBranch(newBranch, this.props.history);
   }
 
@@ -34,9 +34,9 @@ class AddBranch extends Component {
         <div className="col-md-9">
           <input
             type="text"
-            name="branch"
+            name="branchName"
             id="branchName"
-            value={this.state.branch}
+            value={this.state.branchName}
             onChange={this.onChange}
             class="form-control"
             placeholder="Enter Branch Name"

@@ -68,8 +68,11 @@ class AddFaculty extends Component {
               >
                 <option value={0}>Select Branch</option>
                 {/* <!--this list will come from backend from branch table. Given data is for demo--> */}
-                <option value={1}>Electronics Engineering</option>
-                <option value={2}>Computer Engineering</option>
+                <option value={1}>Mechanical Engineering</option>
+                <option value={7}>Computer Engineering</option>
+                <option value={3}>Information Technology</option>
+                <option value={4}>Civil Engineering</option>
+                <option value={5}>Electronics Engineering</option>
               </select>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { GET_FACULTY, GET_FACULTIES } from "../actions/types";
+import { GET_FACULTY, GET_FACULTIES, DELETE_FACULTY } from "../actions/types";
 
 const initialState = {
   faculties: [],
@@ -16,6 +16,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         faculty: action.payload,
+      };
+    case DELETE_FACULTY:
+      return {
+        ...state,
+        faculties: state.faculties.filter(
+          (faculty) => faculty.id !== action.payload
+        ),
       };
     default:
       return state;

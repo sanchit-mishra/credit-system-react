@@ -1,38 +1,45 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import FacultyTable from "./FacultyTable";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getFaculties } from "../../actions/facultyAction";
 
 class FacultyDashboard extends Component {
+  componentDidMount() {
+    this.props.getFaculties();
+  }
+
   render() {
+    const { faculties } = this.props.faculty;
+
+    // const FacultyTableDisplay = () => {
+    //   return (
+    //     <div>
+    //       {faculties.map((faculty) => (
+    //         <FacultyTable key={faculty.id} faculty={faculty} />
+    //       ))}
+    //     </div>
+    //   );
+    // };
+
     return (
       <div className="container">
         <h4>
-          <FontAwesomeIcon icon="chalkboard-teacher" />
-          <span>Faculty</span>
+          <FontAwesomeIcon icon="chalkboard-teacher" /> <span>Faculty</span>
         </h4>
 
         {/* <!--BUTTON TO ADD --> */}
         <Link to="/addFaculty">
           <button className="btn btn-default" id="addBranch">
-            Add Faculty <FontAwesomeIcon icon="plus" />
+            Add Faculty
+            <FontAwesomeIcon icon="plus" />
           </button>
         </Link>
 
         <hr size="2" />
 
-        {/* <!--THE BOX BELOW WILL APPEAR ONLY AFTER REDIRECTING FROM ADD FACULTY PAGE, TILL THEN IT WILL BE HIDDEN. 
-        AFTER ADDING DETAILS PAGE WILL REDIRECT HERE AND THIS MSG WILL APPEAR--> */}
-        <div className="alert alert-success alert-dismissible fade show">
-          <button type="button" className="close" data-dismiss="alert">
-            &times;
-          </button>
-          Faculty details succesfully Added!
-        </div>
-        {/* <!------------------------------ALERT BOX ENDS HERE-----------------------> */}
-
-        {/* <!--------------------TABLE STARTS HERE--------------------------> */}
-
-        {/*    <!----Table controls like search,dropdown to sort by branch------> */}
         <div className="tableControl">
           <div className="row">
             <div className="col-md-9">
@@ -48,73 +55,19 @@ class FacultyDashboard extends Component {
         </div>
         <br />
 
-        {/* <!-----------------SAMPLE TABLE FOR FRONT END PURPOSE. DYNAMIC DATA-------------->  */}
-        <div className="table-responsive">
-          <table className="table table-striped">
-            <thead>
-              <tr>
-                <th>Branch Name</th>
-                <th>Branch</th>
-                <th>EmailID</th>
-                <td></td>
-                <td></td>
-              </tr>
-            </thead>
-            <tr>
-              <td>Neha Desai</td>
-              <td>Computer Engineering</td>
-              <td>demo@example.com</td>
-              <td>
-                <Link to="/updateFaculty">
-                  <span
-                    id="editbtn"
-                    className="fa fa-pencil"
-                    title="Edit"
-                  ></span>
-                  <FontAwesomeIcon
-                    icon="pencil-alt"
-                    id="editbtn"
-                    title="Edit"
-                  />
-                </Link>
-              </td>
-              <td>
-                <span
-                  id="deletebtn"
-                  className="fa fa-trash-o"
-                  title="Delete"
-                ></span>
-                <FontAwesomeIcon icon="trash" />
-              </td>
-            </tr>
-
-            <tr>
-              <td>Sanchit Mishra</td>
-              <td>Mechanical Engineering</td>
-              <td>demo@example.com</td>
-              <td>
-                <span className="fa fa-pencil"></span>
-              </td>
-              <td>
-                <span id="deletebtn" className="fa fa-trash-o"></span>
-              </td>
-            </tr>
-            <tr>
-              <td>Sanchit Mishra</td>
-              <td>Electrical Engineering</td>
-              <td>demo@example.com</td>
-              <td>
-                <span className="fa fa-pencil"></span>
-              </td>
-              <td>
-                <span id="deletebtn" className="fa fa-trash-o"></span>
-              </td>
-            </tr>
-          </table>
-        </div>
+        <FacultyTable faculties={faculties} />
       </div>
     );
   }
 }
 
-export default FacultyDashboard;
+FacultyDashboard.propTypes = {
+  faculty: PropTypes.object.isRequired,
+  getFaculties: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  faculty: state.faculty,
+});
+
+export default connect(mapStateToProps, { getFaculties })(FacultyDashboard);

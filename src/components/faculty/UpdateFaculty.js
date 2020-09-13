@@ -1,6 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getFaculty } from "../../actions/facultyAction";
 
 class UpdateFaculty extends Component {
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.props.getFaculty(id, this.props.history);
+  }
   render() {
     return (
       <div class="container">
@@ -58,4 +65,15 @@ class UpdateFaculty extends Component {
   }
 }
 
-export default UpdateFaculty;
+UpdateFaculty.propTypes = {
+  faculty: PropTypes.object.isRequired,
+  error: PropTypes.object.isRequired,
+  getFaculty: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  faculty: state.faculty.faculty,
+  error: state.error,
+});
+
+export default connect(mapStateToProps, { getFaculty })(UpdateFaculty);

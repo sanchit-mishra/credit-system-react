@@ -10,28 +10,39 @@ class BranchTable extends Component {
   }
 
   render() {
-    const { branch } = this.props;
+    const { branches } = this.props;
     return (
       <div class="table-responsive">
         <table class="table table-striped">
-          <tr>
-            <td>{branch.branchName}</td>
-            <td>
-              <FontAwesomeIcon
-                icon="pencil-alt"
-                id="editbtn"
-                title="Edit"
-              ></FontAwesomeIcon>
-            </td>
-            <td>
-              <FontAwesomeIcon
-                icon="trash"
-                id="deletebtn"
-                title="Delete"
-                onClick={this.onDeleteClick.bind(this, branch.id)}
-              />
-            </td>
-          </tr>
+          <thead>
+            <tr>
+              <th>Branch</th>
+              <td>Edit</td>
+              <td>Delete</td>
+            </tr>
+          </thead>
+          <tbody>
+            {branches.map((branch) => (
+              <tr>
+                <td>{branch.branchName}</td>
+                <td>
+                  <FontAwesomeIcon
+                    icon="pencil-alt"
+                    id="editbtn"
+                    title="Edit"
+                  ></FontAwesomeIcon>
+                </td>
+                <td>
+                  <FontAwesomeIcon
+                    icon="trash"
+                    id="deletebtn"
+                    title="Delete"
+                    onClick={this.onDeleteClick.bind(this, branch.id)}
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     );
