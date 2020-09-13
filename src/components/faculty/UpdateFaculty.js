@@ -6,6 +6,7 @@ import { getFaculty } from "../../actions/facultyAction";
 class UpdateFaculty extends Component {
   componentDidMount() {
     const { id } = this.props.match.params;
+    //console.log(id);
     this.props.getFaculty(id, this.props.history);
   }
   render() {

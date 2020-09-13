@@ -19,12 +19,13 @@ export const addFaculty = (faculty, history) => async (dispatch) => {
   }
 };
 
-/* Get All Faculties */
-export const getFaculties = () => async (dispatch) => {
+/* Get Faculty */
+export const getFaculty = (id, history) => async (dispatch) => {
   try {
-    const res = await axios.get("/faculty");
+    const res = axios.get(`/faculty/${id}`);
+    console.log(res);
     dispatch({
-      type: GET_FACULTIES,
+      type: GET_FACULTY,
       payload: res.data,
     });
   } catch (err) {
@@ -35,13 +36,12 @@ export const getFaculties = () => async (dispatch) => {
   }
 };
 
-/* Get Faculty */
-export const getFaculty = (id, history) => async (dispatch) => {
+/* Get All Faculties */
+export const getFaculties = () => async (dispatch) => {
   try {
-    const res = axios.get(`/faculty/${id}`);
-    console.log(res);
+    const res = await axios.get("/faculty");
     dispatch({
-      type: GET_FACULTY,
+      type: GET_FACULTIES,
       payload: res.data,
     });
   } catch (err) {

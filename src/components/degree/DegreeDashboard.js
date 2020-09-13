@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import AddDegree from "./AddDegree";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import DegreeeTable from "./DegreeTable";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getDegrees } from "../../actions/degreeAction";
 
 class DegreeDashboard extends Component {
+  componentDidMount() {
+    this.props.getDegrees();
+  }
   render() {
+    const { degrees } = this.props.degree;
     return (
       <div class="container">
         <h4>Degree</h4>
@@ -11,41 +18,20 @@ class DegreeDashboard extends Component {
         <AddDegree />
         <hr size="2" />
         <br />
-        <div class="table-responsive">
-          <table class="table table-striped">
-            <thead>
-              <tr>
-                <th>Degree Name</th>
-                <th>Year</th>
-                <td></td>
-                <td></td>
-              </tr>
-            </thead>
-            <tr>
-              <td>BTECH</td>
-              <td>4</td>
-              <td>
-                <FontAwesomeIcon icon="pencil-alt" />
-              </td>
-              <td>
-                <FontAwesomeIcon icon="trash" id="deletebtn" />
-              </td>
-            </tr>
-            <tr>
-              <td>BE</td>
-              <td>4</td>
-              <td>
-                <FontAwesomeIcon icon="pencil-alt" />
-              </td>
-              <td>
-                <FontAwesomeIcon icon="trash" id="deletebtn" />
-              </td>
-            </tr>
-          </table>
-        </div>
+
+        <DegreeeTable degrees={degrees} />
       </div>
     );
   }
 }
 
-export default DegreeDashboard;
+DegreeDashboard.propTypes = {
+  getDegrees: PropTypes.func.isRequired,
+  degree: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  degree: state.degree,
+});
+
+export default connect(mapStateToProps, { getDegrees })(DegreeDashboard);
