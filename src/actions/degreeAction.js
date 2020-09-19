@@ -1,7 +1,7 @@
 import axios from "axios";
 import { DELETE_DEGREE, GET_DEGREES, GET_ERROR } from "./types";
 
-export const addDegree = (newDegree, history) => async (dispatch) => {
+export const addDegree = (newDegree) => async (dispatch) => {
   try {
     await axios.post("/degree", newDegree);
     dispatch({
@@ -44,10 +44,5 @@ export const deleteDegree = (id) => async (dispatch) => {
         payload: id,
       });
     }
-  } catch (err) {
-    dispatch({
-      type: GET_ERROR,
-      payload: err.response.data,
-    });
-  }
+  } catch (err) {}
 };

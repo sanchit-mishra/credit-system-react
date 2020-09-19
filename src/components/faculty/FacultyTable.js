@@ -32,11 +32,6 @@ class FacultyTable extends Component {
                 <td>{faculty.email}</td>
                 <td>
                   <Link to={`/updateFaculty/${faculty.id}`}>
-                    <span
-                      id="editbtn"
-                      className="fa fa-pencil"
-                      title="Edit"
-                    ></span>
                     <FontAwesomeIcon
                       icon="pencil-alt"
                       id="editbtn"
@@ -45,13 +40,10 @@ class FacultyTable extends Component {
                   </Link>
                 </td>
                 <td>
-                  <span
-                    id="deletebtn"
-                    className="fa fa-trash-o"
-                    title="Delete"
-                  ></span>
                   <FontAwesomeIcon
+                    id="deletebtn"
                     icon="trash"
+                    title="Delete"
                     onClick={this.onDeleteClick.bind(this, faculty.id)}
                   />
                 </td>

@@ -122,7 +122,7 @@ class UpdateFaculty extends Component {
                   id="addBranch"
                   onClick={this.onSubmit}
                 >
-                  Add Faculty{" "}
+                  Update Faculty{" "}
                 </button>
               </div>
             </div>

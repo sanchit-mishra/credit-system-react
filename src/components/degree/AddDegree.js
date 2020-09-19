@@ -26,8 +26,8 @@ class AddDegree extends Component {
       degreeName: this.state.degreeName,
       years: this.state.years,
     };
-    console.log(newDegree);
-    this.props.addDegree(newDegree, this.props.history);
+    // console.log(newDegree);
+    this.props.addDegree(newDegree);
   };
 
   render() {

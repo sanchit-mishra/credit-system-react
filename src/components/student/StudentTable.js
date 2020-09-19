@@ -1,7 +1,15 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { deleteStudent } from "../../actions/studentAction";
 
 class StudentTable extends Component {
+  onDeleteClick(id) {
+    this.props.deleteStudent(id);
+  }
+
   render() {
     const { students } = this.props;
 
@@ -28,10 +36,21 @@ class StudentTable extends Component {
               <td>{student.studentType}</td>
               <td>{student.degreeId}</td>
               <td>
-                <FontAwesomeIcon id="editbtn" icon="pencil-alt" title="Edit" />
+                <Link to={`/updateStudent/${student.id}`}>
+                  <FontAwesomeIcon
+                    id="editbtn"
+                    icon="pencil-alt"
+                    title="Edit"
+                  />
+                </Link>
               </td>
               <td>
-                <FontAwesomeIcon id="deletebtn" icon="trash" title="Delete" />
+                <FontAwesomeIcon
+                  id="deletebtn"
+                  icon="trash"
+                  title="Delete"
+                  onClick={this.onDeleteClick.bind(this, student.id)}
+                />
               </td>
             </tr>
           ))}
@@ -41,4 +60,8 @@ class StudentTable extends Component {
   }
 }
 
-export default StudentTable;
+StudentTable.propTypes = {
+  deleteStudent: PropTypes.func.isRequired,
+};
+
+export default connect(null, { deleteStudent })(StudentTable);

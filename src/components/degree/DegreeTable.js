@@ -5,12 +5,7 @@ import { connect } from "react-redux";
 import { deleteDegree } from "../../actions/degreeAction";
 
 class DegreeeTable extends Component {
-  constructor() {
-    super();
-    this.onClickDelete = this.onClickDelete.bind(this);
-  }
-
-  onClickDelete(id) {
+  onDeleteClick(id) {
     this.props.deleteDegree(id);
   }
 
@@ -40,7 +35,7 @@ class DegreeeTable extends Component {
                   <FontAwesomeIcon
                     icon="trash"
                     id="deletebtn"
-                    onClick={this.onClickDelete(degree.id)}
+                    onClick={this.onDeleteClick.bind(this, degree.id)}
                   />
                 </td>
               </tr>

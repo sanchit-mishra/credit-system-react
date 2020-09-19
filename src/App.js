@@ -14,6 +14,7 @@ import Header from "./components/layout/header";
 import BranchDashboard from "./components/branch/BranchDashboard";
 import StudentDashboard from "./components/student/StudentDashboard";
 import AddStudent from "./components/student/AddStudent";
+import UpdateStudent from "./components/student/UpdateStudent";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           {/* Student Use Route */}
           <Route exact path="/studentDashboard" component={StudentDashboard} />
           <Route exact path="/addStudent" component={AddStudent} />
+          <Route exact path="/updateStudent/:id" component={UpdateStudent} />
         </div>
       </Router>
     </Provider>

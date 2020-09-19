@@ -19,3 +19,4 @@ export const DELETE_DEGREE = "DELETE_DEGREE";
 //Student Actions
 export const GET_STUDENT = "GET_STUDENT";
 export const GET_STUDENTS = "GET_STUDENTS";
+export const DELETE_STUDENT = "DELETE_STUDENT";
