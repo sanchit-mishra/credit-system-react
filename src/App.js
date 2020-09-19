@@ -12,6 +12,8 @@ import UpdateFaculty from "./components/faculty/UpdateFaculty";
 import DegreeDashboard from "./components/degree/DegreeDashboard";
 import Header from "./components/layout/header";
 import BranchDashboard from "./components/branch/BranchDashboard";
+import StudentDashboard from "./components/student/StudentDashboard";
+import AddStudent from "./components/student/AddStudent";
 
 function App() {
   return (
@@ -28,6 +30,9 @@ function App() {
           <Route exact path="/degreeDashboard" component={DegreeDashboard} />
           {/* Branch Use Route */}
           <Route exact path="/branchDashboard" component={BranchDashboard} />
+          {/* Student Use Route */}
+          <Route exact path="/studentDashboard" component={StudentDashboard} />
+          <Route exact path="/addStudent" component={AddStudent} />
         </div>
       </Router>
     </Provider>

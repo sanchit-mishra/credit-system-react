@@ -5,7 +5,7 @@ export const addBranch = (newBranch, history) => async (dispatch) => {
   try {
     console.log(newBranch);
     await axios.post("/branch", newBranch);
-    history.push("/branchDashboard");
+    //history.push("/branchDashboard");
     dispatch({
       type: GET_ERROR,
       payload: {},

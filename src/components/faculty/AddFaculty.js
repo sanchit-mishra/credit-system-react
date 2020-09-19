@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addFaculty } from "../../actions/facultyAction";
+import { getBranches } from "../../actions/branchAction";
 
 class AddFaculty extends Component {
   constructor() {
@@ -11,7 +12,7 @@ class AddFaculty extends Component {
       name: "",
       email: "",
       password: "",
-      branch: "",
+      branchId: "",
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -27,13 +28,29 @@ class AddFaculty extends Component {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
-      branch: this.state.branch,
+      branchId: this.state.branchId,
     };
     console.log(newFaculty);
     this.props.addFaculty(newFaculty, this.props.history);
   }
 
+  componentDidMount() {
+    this.props.getBranches();
+  }
+
   render() {
+    const { branches } = this.props.branch;
+    console.log(branches.branchId);
+
+    let branchList =
+      branches.length > 0 &&
+      branches.map((item, i) => {
+        return (
+          <option key={i} value={item.id}>
+            {item.branchName}
+          </option>
+        );
+      }, this);
     return (
       <div className="container">
         <h4>Enter Faculty Details</h4>
@@ -62,17 +79,12 @@ class AddFaculty extends Component {
               <label for="selectBranch">Branch:</label>
               <select
                 id="selectBranch"
-                name="branch"
-                value={this.state.branch}
+                name="branchId"
+                value={this.state.branchId}
                 onChange={this.onChange}
               >
-                <option value={0}>Select Branch</option>
-                {/* <!--this list will come from backend from branch table. Given data is for demo--> */}
-                <option value={1}>Mechanical Engineering</option>
-                <option value={7}>Computer Engineering</option>
-                <option value={3}>Information Technology</option>
-                <option value={4}>Civil Engineering</option>
-                <option value={5}>Electronics Engineering</option>
+                <option value="">Select Branch</option>
+                {branchList}
               </select>
             </div>
           </div>
@@ -123,10 +135,15 @@ class AddFaculty extends Component {
 AddFaculty.propTypes = {
   addFaculty: PropTypes.func.isRequired,
   faculty: PropTypes.object.isRequired,
+  getBranches: PropTypes.func.isRequired,
+  branch: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   faculty: state.faculty,
+  branch: state.branch,
 });
 
-export default connect(mapStateToProps, { addFaculty })(AddFaculty);
+export default connect(mapStateToProps, { addFaculty, getBranches })(
+  AddFaculty
+);

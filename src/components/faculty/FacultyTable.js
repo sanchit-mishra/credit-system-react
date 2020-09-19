@@ -28,7 +28,7 @@ class FacultyTable extends Component {
             {faculties.map((faculty) => (
               <tr>
                 <td>{faculty.name}</td>
-                <td>Computer Engineering</td>
+                <td>{faculty.branchId}</td>
                 <td>{faculty.email}</td>
                 <td>
                   <Link to={`/updateFaculty/${faculty.id}`}>

@@ -9,8 +9,8 @@ class AddDegree extends Component {
     super();
 
     this.state = {
-      degree: "",
-      year: "",
+      degreeName: "",
+      years: "",
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -23,8 +23,8 @@ class AddDegree extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const newDegree = {
-      degree: this.state.degree,
-      year: this.state.year,
+      degreeName: this.state.degreeName,
+      years: this.state.years,
     };
     console.log(newDegree);
     this.props.addDegree(newDegree, this.props.history);
@@ -36,22 +36,22 @@ class AddDegree extends Component {
         <div class="col-md-4">
           <input
             type="text"
-            name="degree"
+            name="degreeName"
             id="degreeName"
             class="form-control"
             placeholder="Enter Degree Name"
-            value={this.state.degree}
+            value={this.state.degreeName}
             onChange={this.onChange}
           />
         </div>
         <div class="col-md-4">
           <input
             type="text"
-            name="year"
+            name="years"
             id="noofyears"
             class="form-control"
             placeholder="Enter No. of Years"
-            value={this.state.year}
+            value={this.state.years}
             onChange={this.onChange}
           />
         </div>

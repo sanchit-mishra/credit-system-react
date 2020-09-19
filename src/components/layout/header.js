@@ -12,7 +12,7 @@ class Header extends Component {
         <Link to="/branchDashboard">Branch</Link>
         <Link to="/degreeDashboard">Degree</Link>
         <Link to="/facultyDashboard">Faculty</Link>
-        <a href="studentdashboard.html">Student</a>
+        <Link to="/studentDashboard">Student</Link>
         <a href="activitydashboard.html">Activity</a>
 
         {/*<a style="float: right">Hello,<b> Admin !</b></a>

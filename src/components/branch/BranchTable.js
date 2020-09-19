@@ -3,14 +3,42 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { deleteBranch } from "../../actions/branchAction";
+import UpdateBranch from "./UpdateBranch";
 
 class BranchTable extends Component {
+  constructor() {
+    super();
+    this.state = {
+      modalShow: false,
+    };
+    this.modalAppearance = this.modalAppearance.bind(this);
+  }
+
   onDeleteClick(id) {
     this.props.deleteBranch(id);
   }
 
+  modalAppearance() {
+    this.setState({ modalShow: !this.state.modalShow });
+    //console.log(this.state.modalShow);
+  }
+
   render() {
     const { branches } = this.props;
+    const modalShowNow = () => {
+      return (
+        <div>
+          <UpdateBranch />
+        </div>
+      );
+    };
+    let modalResponse;
+    if (this.state.modalShow) {
+      modalResponse = modalShowNow;
+    } else {
+      modalResponse = null;
+    }
+
     return (
       <div class="table-responsive">
         <table class="table table-striped">
@@ -30,6 +58,7 @@ class BranchTable extends Component {
                     icon="pencil-alt"
                     id="editbtn"
                     title="Edit"
+                    onClick={this.modalAppearance}
                   ></FontAwesomeIcon>
                 </td>
                 <td>
@@ -44,6 +73,7 @@ class BranchTable extends Component {
             ))}
           </tbody>
         </table>
+        {modalResponse}
       </div>
     );
   }

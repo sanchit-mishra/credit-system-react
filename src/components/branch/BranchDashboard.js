@@ -9,6 +9,10 @@ class BranchDashboard extends Component {
   componentDidMount() {
     this.props.getBranches();
   }
+
+  UNSAFE_componentWillReceiveProps() {
+    this.props.getBranches();
+  }
   render() {
     const { branches } = this.props.branch;
 

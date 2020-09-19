@@ -9,6 +9,11 @@ class DegreeDashboard extends Component {
   componentDidMount() {
     this.props.getDegrees();
   }
+
+  UNSAFE_componentWillReceiveProps() {
+    this.props.getDegrees();
+  }
+
   render() {
     const { degrees } = this.props.degree;
     return (

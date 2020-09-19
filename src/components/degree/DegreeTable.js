@@ -1,7 +1,19 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { deleteDegree } from "../../actions/degreeAction";
 
 class DegreeeTable extends Component {
+  constructor() {
+    super();
+    this.onClickDelete = this.onClickDelete.bind(this);
+  }
+
+  onClickDelete(id) {
+    this.props.deleteDegree(id);
+  }
+
   render() {
     const { degrees } = this.props;
     console.table(degrees);
@@ -19,13 +31,17 @@ class DegreeeTable extends Component {
           <tbody>
             {degrees.map((degree) => (
               <tr>
-                <td>{degree.degree}</td>
-                <td>{degree.year}</td>
+                <td>{degree.degreeName}</td>
+                <td>{degree.years}</td>
                 <td>
                   <FontAwesomeIcon icon="pencil-alt" />
                 </td>
                 <td>
-                  <FontAwesomeIcon icon="trash" id="deletebtn" />
+                  <FontAwesomeIcon
+                    icon="trash"
+                    id="deletebtn"
+                    onClick={this.onClickDelete(degree.id)}
+                  />
                 </td>
               </tr>
             ))}
@@ -36,4 +52,8 @@ class DegreeeTable extends Component {
   }
 }
 
-export default DegreeeTable;
+DegreeeTable.propTypes = {
+  deleteDegree: PropTypes.func.isRequired,
+};
+
+export default connect(null, { deleteDegree })(DegreeeTable);

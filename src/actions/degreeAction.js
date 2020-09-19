@@ -1,10 +1,9 @@
 import axios from "axios";
-import { GET_DEGREE, GET_DEGREES, GET_ERROR, DELETE_DEGREE } from "./types";
+import { DELETE_DEGREE, GET_DEGREES, GET_ERROR } from "./types";
 
 export const addDegree = (newDegree, history) => async (dispatch) => {
   try {
     await axios.post("/degree", newDegree);
-    history.push("/degreeDashboard");
     dispatch({
       type: GET_ERROR,
       payload: {},
@@ -24,6 +23,27 @@ export const getDegrees = () => async (dispatch) => {
       type: GET_DEGREES,
       payload: res.data,
     });
+  } catch (err) {
+    dispatch({
+      type: GET_ERROR,
+      payload: err.response.data,
+    });
+  }
+};
+
+export const deleteDegree = (id) => async (dispatch) => {
+  try {
+    if (
+      window.confirm(
+        "Are you sure? This will delete all the data related to it"
+      )
+    ) {
+      await axios.delete(`/degree/${id}`);
+      dispatch({
+        type: DELETE_DEGREE,
+        payload: id,
+      });
+    }
   } catch (err) {
     dispatch({
       type: GET_ERROR,
