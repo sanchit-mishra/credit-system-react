@@ -127,7 +127,8 @@ a.userWelcome {
 #addCategory,
 #addactivity,
 #mapfaculty,
-#addCategoryModal {
+#addCategoryModal,
+#assignFaculty {
   background-color: #61b7a2;
   color: white;
   outline: none;
@@ -142,7 +143,8 @@ a.userWelcome {
 #addCategory:hover,
 #addactivity:hover,
 #mapfaculty:hover,
-#addCategoryModal:hover {
+#addCategoryModal:hover,
+#assignFaculty:hover {
   background-color: #47796b;
 }
 
@@ -264,4 +266,19 @@ select {
   100% {
     transform: translate(-50%, -50%) scale(1, 1);
   }
+}
+
+/*ACTIVITY PAGE DETAILS*/
+#categoryDropdown,
+#activityDropdown {
+  width: 100%;
+  padding: 8px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+#multipleFaculty {
+  width: 100%;
 }

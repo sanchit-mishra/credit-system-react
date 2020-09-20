@@ -24,6 +24,7 @@ class AddBranch extends Component {
     const newBranch = {
       branchName: this.state.branchName,
     };
+    this.setState({ branchName: "" });
     //console.log(newBranch);
     this.props.addBranch(newBranch, this.props.history);
   }

@@ -16,7 +16,7 @@ class Dashboard extends Component {
                 <FontAwesomeIcon icon="calendar-check" />
               </h5>
               <div className="moreinfo">
-                <Link to="#">
+                <Link to="/activityDashboard">
                   More Info <FontAwesomeIcon icon="info-circle" />
                 </Link>
               </div>

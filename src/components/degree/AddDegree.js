@@ -26,6 +26,10 @@ class AddDegree extends Component {
       degreeName: this.state.degreeName,
       years: this.state.years,
     };
+    this.setState({
+      degreeName: "",
+      years: "",
+    });
     // console.log(newDegree);
     this.props.addDegree(newDegree);
   };

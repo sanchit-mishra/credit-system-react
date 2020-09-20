@@ -13,7 +13,7 @@ class Header extends Component {
         <Link to="/degreeDashboard">Degree</Link>
         <Link to="/facultyDashboard">Faculty</Link>
         <Link to="/studentDashboard">Student</Link>
-        <a href="activitydashboard.html">Activity</a>
+        <Link to="/activityDashboard">Activity</Link>
 
         {/*<a style="float: right">Hello,<b> Admin !</b></a>
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">

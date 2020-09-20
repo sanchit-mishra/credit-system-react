@@ -222,8 +222,8 @@ class AddStudent extends Component {
                     type="radio"
                     class="form-check-input"
                     name="studentType"
-                    value="Direct Second Year"
-                    checked={this.state.studentType === "Direct Second Year"}
+                    value="DSE"
+                    checked={this.state.studentType === "DSE"}
                     onChange={this.onChange}
                   />
                   Direct Second Year

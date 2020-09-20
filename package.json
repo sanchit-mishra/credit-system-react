@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@progress/kendo-react-grid": "^3.17.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -42,6 +43,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/react-fontawesome": "^0.1.11",
     "axios": "^0.20.0",
-    "prop-types": "^15.7.2"
+    "prop-types": "^15.7.2",
+    "react-select": "^3.1.0"
   }
 }

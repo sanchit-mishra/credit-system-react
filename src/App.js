@@ -15,6 +15,9 @@ import BranchDashboard from "./components/branch/BranchDashboard";
 import StudentDashboard from "./components/student/StudentDashboard";
 import AddStudent from "./components/student/AddStudent";
 import UpdateStudent from "./components/student/UpdateStudent";
+import ActivityDashboard from "./components/activity/ActivityDashboard";
+import AddActivity from "./components/activity/AddActivity";
+import AssignActivity from "./components/activity/AssignActivity";
 
 function App() {
   return (
@@ -35,6 +38,14 @@ function App() {
           <Route exact path="/studentDashboard" component={StudentDashboard} />
           <Route exact path="/addStudent" component={AddStudent} />
           <Route exact path="/updateStudent/:id" component={UpdateStudent} />
+          {/* Activity Use Route */}
+          <Route
+            exact
+            path="/activityDashboard"
+            component={ActivityDashboard}
+          />
+          <Route exact path="/addActivity" component={AddActivity} />
+          <Route exact path="/assignActivity" component={AssignActivity} />
         </div>
       </Router>
     </Provider>
