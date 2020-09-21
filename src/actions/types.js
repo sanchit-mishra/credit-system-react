@@ -28,4 +28,3 @@ export const GET_CATEGORIES = "GET_CATEGORIES";
 //Activity Actions
 export const GET_ACTIVITY = "GET_ACTIVITY";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
- 

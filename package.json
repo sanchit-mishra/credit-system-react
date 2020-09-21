@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@khanacademy/react-multi-select": "^0.3.3",
     "@progress/kendo-react-grid": "^3.17.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",

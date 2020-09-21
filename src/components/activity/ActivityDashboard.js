@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addCategory } from "../../actions/categoryAction";
 import { Link } from "react-router-dom";
+import ActivityTable from "./ActivityTable";
+import { getActFacts } from "../../actions/activityAction";
 
 class ActivityDashboard extends Component {
   constructor() {
@@ -15,6 +17,10 @@ class ActivityDashboard extends Component {
 
     this.turnoffoverlay = this.turnoffoverlay.bind(this);
     this.turnonoverlay = this.turnonoverlay.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getActFacts();
   }
 
   onChange = (e) => {
@@ -38,6 +44,9 @@ class ActivityDashboard extends Component {
   };
 
   render() {
+    const { activities } = this.props.activity;
+    console.log(activities);
+
     return (
       <div className="container">
         <h4>Activity</h4>
@@ -113,7 +122,7 @@ class ActivityDashboard extends Component {
             </div>
           </div>
         </div>
-
+        <ActivityTable activities={activities} />
         <br />
       </div>
     );
@@ -122,6 +131,14 @@ class ActivityDashboard extends Component {
 ActivityDashboard.propTypes = {
   addCategory: PropTypes.func.isRequired,
   category: PropTypes.object.isRequired,
+  getActFacts: PropTypes.func.isRequired,
+  activity: PropTypes.object.isRequired,
 };
 
-export default connect(null, { addCategory })(ActivityDashboard);
+const mapStateToProps = (state) => ({
+  activity: state.activity,
+});
+
+export default connect(mapStateToProps, { addCategory, getActFacts })(
+  ActivityDashboard
+);

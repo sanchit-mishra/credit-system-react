@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Select from "react-select";
+import MultiSelect from "@khanacademy/react-multi-select";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCategories } from "../../actions/categoryAction";
-import { getActivities } from "../../actions/activityAction";
+import { getActivities, assignActFact } from "../../actions/activityAction";
 import { getFaculties } from "../../actions/facultyAction";
 
 class AssignActivity extends Component {
@@ -15,7 +15,7 @@ class AssignActivity extends Component {
       forAll: "",
     };
     this.onChange = this.onChange.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    //this.handleChange = this.handleChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -24,33 +24,46 @@ class AssignActivity extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleChange = (e) => {
-    //console.log(e.target);
-    // this.setState({
-    //   facultyIds: Array.from(
-    //     e.target.selectedOptions,
-    //     (option) => option.value
-    //   ),
-    // });
-    //this.setState({ facultyIds: value });
-    // var options = e.target.options;
-    // var value = [];
-    // for (var i = 0, l = options.length; i < l; i++) {
-    //   value.push(options[i].value);
-    // }
-    // this.setState({ facultyIds: value });
-    //console.log(e.target);
-    // this.setState({
-    //   // facultyIds: Array.from(
-    //   //   e.target.selectedOptions,
-    //   //   (option) => option.value
-    //   // ),
-    //   facultyIds: e.target.value,
-    // });
-    // for (var i = 0; i < 3; i++) {
-    //   console.log(e.target.value);
-    // }
-  };
+  //handleChange = (e) => {
+  //console.log(e[0].value);
+  //   this.setState({ facultyIds: [...this.state.facultyIds, e[0].value] });
+  //   value.push(e[0].value);
+  //   console.log(value);
+  // this.setState({
+  //   facultyIds: Array.from(
+  //     e.target.selectedOptions,
+  //     (option) => option.value
+  //   ),
+  // });
+  //   this.setState({ facultyIds: value });
+  //   var options = e[0].value;
+  //   var value = [];
+  //   for (var i = 0, l = options.length; i < l; i++) {
+  //     value.push(options[i].value);
+  //   }
+  //   this.setState({ facultyIds: value });
+  //   console.log(value);
+  //   this.setState({ facultyIds: value });
+  //   console.log(e.target);
+  //   this.setState({
+  //     // facultyIds: Array.from(
+  //     //   e.target.selectedOptions,
+  //     //   (option) => option.value
+  //     // ),
+  //     facultyIds: e.target.value,
+  //   });
+  //   for (var i = 0; i < 3; i++) {
+  //     console.log(e.target.value);
+  // };
+
+  //   let newItem = e[0].value;
+  //   let value = e.map((e) => e.value);
+  //   let value = [];
+  //   value.push(e.map((e) => e.value));
+  //   console.log(e.value);
+  //   this.setState({ facultyIds: value });
+  //   console.log(this.state.facultyIds);
+  // };
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -59,7 +72,8 @@ class AssignActivity extends Component {
       facultyIds: this.state.facultyIds,
       forAll: this.state.forAll,
     };
-    console.log(actMap);
+    // console.log(actMap);
+    this.props.assignActFact(actMap, this.props.history);
   };
 
   componentDidMount() {
@@ -88,13 +102,28 @@ class AssignActivity extends Component {
     });
 
     const { faculties } = this.props.faculty;
-    let facultyList = faculties.map((faculty) => {
-      return {
-        value: faculty.id,
-        label: faculty.name,
-      };
-    });
-    console.log(facultyList);
+    let facultyList;
+    if (faculties) {
+      facultyList = faculties.map((faculty) => {
+        return {
+          value: faculty.id,
+          label: faculty.name,
+        };
+      });
+    }
+    //console.log(facultyList);
+
+    // let optionList = [
+    //   {
+    //     value: 2,
+    //     label: "prachi",
+    //   },
+    //   {
+    //     value: 3,
+    //     label: "shailesh",
+    //   },
+    // ];
+
     return (
       <div class="container">
         <h4>Assign Faculty to Activity</h4>
@@ -135,15 +164,25 @@ class AssignActivity extends Component {
         <div class="row">
           <div class="col-md-8">
             <label htmlFor="multipleFaculty">Select Faculties:</label>
-            <Select
-              isMulti
-              isSearchable
-              name="facultyIds"
-              className="basic-multi-select"
-              classNamePrefix="select"
-              value={this.state.facultyIds}
-              onChange={this.onChange}
+            {/* <MultiSelect
+              //isMulti
+              //isSearchable
+              //isClearable
+              //name="facultyIds"
+              //className="basic-multi-select"
+              //classNamePrefix="select"
+              //value={this.state.facultyIds}
+              //onChange= {this.handleChange}
+              //defaultValue={this.state.facultyIds}
               options={facultyList}
+              selected={this.state.facultyIds}
+              onSelectedChanged={(facultyIds) => this.setState({ facultyIds })}
+            /> */}
+            <MultiSelect
+              options={facultyList}
+              selected={this.state.facultyIds}
+              onSelectedChanged={(facultyIds) => this.setState({ facultyIds })}
+              value={this.state.facultyIds}
             />
           </div>
         </div>
@@ -203,6 +242,7 @@ AssignActivity.propTypes = {
   activity: PropTypes.object.isRequired,
   getFaculties: PropTypes.func.isRequired,
   faculty: PropTypes.object.isRequired,
+  assignActFact: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -215,4 +255,5 @@ export default connect(mapStateToProps, {
   getCategories,
   getActivities,
   getFaculties,
+  assignActFact,
 })(AssignActivity);
