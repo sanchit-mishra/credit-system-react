@@ -4,16 +4,25 @@ import SideNav from "./SideNav";
 import TopNav from "./TopNav";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getEnrollActivitiesStatus } from "../../actions/studentActivityAction";
+import {
+  getEnrollActivitiesStatus,
+  deleteEnrollActivity,
+} from "../../actions/studentActivityAction";
 
 class StudentActivityStatus extends Component {
   componentDidMount() {
     this.props.getEnrollActivitiesStatus(2);
   }
 
+  onDeleteClick(id) {
+    this.props.deleteEnrollActivity(id);
+  }
+
   render() {
     const { enrollStatus } = this.props.student;
     console.log(enrollStatus);
+    // const { Activities } = enrollStatus;
+    // let activityList = Activities.map((activity) => )
     return (
       <React.Fragment>
         <SideNav />
@@ -24,9 +33,9 @@ class StudentActivityStatus extends Component {
             Pending/Rejected Activties:{" "}
           </div>
 
-          <div class="maindivs">
-            <div class="table-responsive">
-              <table class="table table-striped">
+          <div className="maindivs">
+            <div className="table-responsive">
+              <table className="table table-striped">
                 <thead>
                   <tr>
                     <th>No.</th>
@@ -34,7 +43,7 @@ class StudentActivityStatus extends Component {
                     <th>Status</th>
                     <th>Category Name</th>
                     <th>Start Date</th>
-                    <th>Setting</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -47,10 +56,13 @@ class StudentActivityStatus extends Component {
                           {enroll.status == null ? "pending" : "waiting"}
                         </button>
                       </td>
-                      <td>CSI</td>
+                      <td></td>
                       <td>{enroll.sDate}</td>
                       <td>
-                        <FontAwesomeIcon icon="trash" />
+                        <FontAwesomeIcon
+                          icon="trash"
+                          onClick={this.onDeleteClick.bind(this, enroll.id)}
+                        />
                       </td>
                     </tr>
                   ))}
@@ -66,6 +78,7 @@ class StudentActivityStatus extends Component {
 
 StudentActivityStatus.propTypes = {
   getEnrollActivitiesStatus: PropTypes.func.isRequired,
+  deleteEnrollActivity: PropTypes.func.isRequired,
   student: PropTypes.object.isRequired,
 };
 
@@ -73,6 +86,7 @@ const mapStateToProps = (state) => ({
   student: state.student,
 });
 
-export default connect(mapStateToProps, { getEnrollActivitiesStatus })(
-  StudentActivityStatus
-);
+export default connect(mapStateToProps, {
+  getEnrollActivitiesStatus,
+  deleteEnrollActivity,
+})(StudentActivityStatus);

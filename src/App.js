@@ -1,7 +1,5 @@
 import React from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import $ from "jquery";
-import Popper from "popper.js";
 import "../node_modules/bootstrap/dist/js/bootstrap.min";
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
 import "./components/FontAwesomeIcons/faicons";

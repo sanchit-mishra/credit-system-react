@@ -3,6 +3,7 @@ import {
   GET_STUDENT,
   GET_STUDENTS,
   GET_ENROLL_STATUS,
+  DELETE_ENROLL,
 } from "../actions/types";
 
 const initialState = {
@@ -34,6 +35,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         enrollStatus: action.payload,
+      };
+    case DELETE_ENROLL:
+      return {
+        ...state,
+        enrollStatus: state.enrollStatus.filter(
+          (enroll) => enroll.id !== action.payload
+        ),
       };
     default:
       return state;

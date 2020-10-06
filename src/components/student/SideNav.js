@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 export default function SideNav() {
   return (
-    <div className="sideNavbar">
-      <Link to="/studentLoginDash" id="webName">
+    <div className="sideNavbar" id="sideNavbar">
+      <Link to="/" id="webName">
         ACTIVITY PORTAL
       </Link>
       <br />

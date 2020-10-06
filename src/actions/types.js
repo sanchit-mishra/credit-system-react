@@ -36,3 +36,4 @@ export const GET_ACTIVITY_CATEGORY = "GET_ACTIVITY_CATEGORY";
 
 //Enroll Action
 export const GET_ENROLL_STATUS = "GET_ENROLL_STATUS";
+export const DELETE_ENROLL = "DELETE_ENROLL";

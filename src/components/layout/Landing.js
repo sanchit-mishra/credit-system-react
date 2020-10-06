@@ -11,7 +11,7 @@ class Landing extends Component {
           <div className="container">
             <div className="row">
               <div className="col-md-12 text-center">
-                <h1 className="display-3 mb-4">Activity Portal</h1>
+                <h1 className="display-3 mb-4">TCET Activity Portal</h1>
                 <p className="lead">
                   Create your account to join activity portal.
                 </p>

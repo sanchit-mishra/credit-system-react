@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import SideNav from "./SideNav";
-import StudentActivityStatus from "./StudentActivityStatus";
 import TopNav from "./TopNav";
 
-
 class StudentLoginDash extends Component {
-  
   render() {
-  
     return (
       <React.Fragment>
         <SideNav />
@@ -65,17 +61,10 @@ class StudentLoginDash extends Component {
               </div>
             </div>
           </div>
-        
         </div>
       </React.Fragment>
     );
   }
 }
 
-
-
-
-
-export default 
-  StudentLoginDash
-;
+export default StudentLoginDash;

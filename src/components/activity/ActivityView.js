@@ -18,17 +18,33 @@ class ActivityView extends Component {
   render() {
     const { activityCategory } = this.props.activity;
 
+    let facultyArray = activityCategory.Faculties;
+    console.log(facultyArray);
+
+    //const facultyNames = facultyArray.map((faculty) => (
+    //  <div className="facultyName">{faculty.name}</div>
+    //));
+
     // const category = activityCategory.map((activity) => activity.title);
     // console.log(category);
     const docRequired = activityCategory.docRequired ? "Yes" : "No";
-    console.log(activityCategory);
+    //console.log(activityCategory.Faculties[0].name);
+    // let FacultyNameList = facultyArray.map((faculty) => faculty.name);
+    // for (let i = 0; i < facultyArray; i++) {
+    //   if (facultyArray[i].name.length > 1) {
+    //     FacultyNameList.push(facultyArray[i].name);
+    //   }
+    // }
+    //console.log(FacultyNameList);
+
+    //console.log(activityCategory);
     //console.log(activityCategory.Category);
     //console.log(activityCategory.Category.categoryName);
     // console.log(activityCategory.Faculties.name);
     //const Faculties = [...activityCategory.Faculties];
     //const Faculties = activityCategory.Faculties.slice();
     //console.log(Faculties);
-    let { Category } = activityCategory;
+    //let { Category } = activityCategory;
     //console.log(Category["categoryName"]);
     //let facultiesName = Faculties.map((faculty) => faculty.name);
 

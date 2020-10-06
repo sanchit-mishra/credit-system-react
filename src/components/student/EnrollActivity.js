@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import SideNav from "./SideNav";
 import TopNav from "./TopNav";
@@ -7,8 +6,8 @@ import PropTypes from "prop-types";
 import { getCategories } from "../../actions/categoryAction";
 import { getActivities } from "../../actions/activityAction";
 import { enrollActivity } from "../../actions/studentActivityAction";
-import Dropzone from "react-dropzone-uploader";
-import "react-dropzone-uploader/dist/styles.css";
+//import Dropzone from "react-dropzone-uploader";
+//import "react-dropzone-uploader/dist/styles.css";
 
 class EnrollActivity extends Component {
   constructor() {
