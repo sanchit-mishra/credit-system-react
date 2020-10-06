@@ -19,7 +19,7 @@ export const addStudent = (newStudent, history) => async (dispatch) => {
 
 export const getStudents = () => async (dispatch) => {
   try {
-    const res = await axios.get("/student");
+    const res = await axios.get("/student/withDetails");
     dispatch({
       type: GET_STUDENTS,
       payload: res.data,

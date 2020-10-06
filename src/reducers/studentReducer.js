@@ -1,8 +1,14 @@
-import { DELETE_STUDENT, GET_STUDENT, GET_STUDENTS } from "../actions/types";
+import {
+  DELETE_STUDENT,
+  GET_STUDENT,
+  GET_STUDENTS,
+  GET_ENROLL_STATUS,
+} from "../actions/types";
 
 const initialState = {
   students: [],
   student: {},
+  enrollStatus: [],
 };
 
 export default function (state = initialState, action) {
@@ -23,6 +29,11 @@ export default function (state = initialState, action) {
         students: state.students.filter(
           (student) => student.id !== action.payload
         ),
+      };
+    case GET_ENROLL_STATUS:
+      return {
+        ...state,
+        enrollStatus: action.payload,
       };
     default:
       return state;

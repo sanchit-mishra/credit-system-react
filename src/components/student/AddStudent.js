@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { addStudent } from "../../actions/studentAction";
 import { getBranches } from "../../actions/branchAction";
 import { getDegrees } from "../../actions/degreeAction";
+import Header from "../layout/header";
 
 class AddStudent extends Component {
   constructor() {
@@ -16,6 +17,7 @@ class AddStudent extends Component {
       mobileNo: "",
       branchId: "",
       studentType: "",
+      erpId: "",
       degreeId: "",
     };
   }
@@ -38,6 +40,7 @@ class AddStudent extends Component {
       mobileNo: this.state.mobileNo,
       branchId: this.state.branchId,
       studentType: this.state.studentType,
+      erpId: this.state.erpId,
       degreeId: this.state.degreeId,
     };
     console.log(newStudent);
@@ -64,15 +67,17 @@ class AddStudent extends Component {
       );
     });
     return (
-      <div class="container">
-        <h4>Enter Student Details</h4>
+      <React.Fragment>
+        <Header />
+        <div class="container">
+          <h4>Enter Student Details</h4>
 
-        <hr size="2" />
+          <hr size="2" />
 
-        <form onSubmit={this.onSubmit}>
-          {/*<!--first row-->*/}
-          <div class="row">
-            {/* <div class="col-md-2">
+          <form onSubmit={this.onSubmit}>
+            {/*<!--first row-->*/}
+            <div class="row">
+              {/* <div class="col-md-2">
               <label for="RollNo">Roll Number:</label>
               <div class="form-group">
                 <input
@@ -84,162 +89,178 @@ class AddStudent extends Component {
                 />
               </div>
     </div> */}
-          </div>
-
-          {/* <!--second row--> */}
-          <div class="row">
-            <div class="col-md-6">
-              <label for="StudentName">Student Name:</label>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="name"
-                  id="StudentName"
-                  value={this.state.name}
-                  onChange={this.onChange}
-                  required
-                />
-              </div>
             </div>
 
-            <div class="col-md-6">
-              <label for="mobileNo">Mobile Number:</label>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="mobileNo"
-                  id="mobileNo"
-                  value={this.state.mobileNo}
-                  onChange={this.onChange}
-                  // required
-                />
-              </div>
-            </div>
-          </div>
-
-          {/*<!--third row-->*/}
-          <div class="row">
-            <div class="col-md-6">
-              <label for="emailID">Email ID:</label>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="email"
-                  id="emailID"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="selectBranch">Branch:</label>
-              <select
-                id="selectBranch"
-                name="branchId"
-                value={this.state.branchId}
-                onChange={this.onChange}
-              >
-                <option value="">Select Branch</option>
-                {branchList}
-              </select>
-            </div>
-          </div>
-
-          {/* <!--fourth row--> */}
-          <div class="row">
-            <div class="col-md-6">
-              <label for="password">Enter Password:</label>
-              <div class="form-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  name="password"
-                  id="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="password">Re-Enter Password:</label>
-              <div class="form-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  name="repassword"
-                  id="repassword"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-
-          {/* <!--fifth row--> */}
-          <div class="row">
-            <div class="col-md-6">
-              <label for="degreeType">Degree Type:</label>
-              <select
-                id="degreeType"
-                name="degreeId"
-                value={this.state.degreeId}
-                onChange={this.onChange}
-              >
-                <option value="">Select Degree</option>
-
-                {degreeList}
-              </select>
-            </div>
-          </div>
-
-          {/* <!--sixth row--> */}
-          <div class="row">
-            <div class="col-md-6">
-              <label>Admission Type:</label>
-              <br />
-              <div class="form-check-inline">
-                <label class="form-check-label">
+            {/* <!--second row--> */}
+            <div class="row">
+              <div class="col-md-6">
+                <label for="StudentName">Student Name:</label>
+                <div class="form-group">
                   <input
-                    type="radio"
-                    class="form-check-input"
-                    name="studentType"
-                    value="Regular"
-                    checked={this.state.studentType === "Regular"}
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    id="StudentName"
+                    value={this.state.name}
                     onChange={this.onChange}
+                    required
                   />
-                  Regular
-                </label>
+                </div>
               </div>
-              <div class="form-check-inline">
-                <label class="form-check-label">
+
+              <div class="col-md-6">
+                <label for="mobileNo">Mobile Number:</label>
+                <div class="form-group">
                   <input
-                    type="radio"
-                    class="form-check-input"
-                    name="studentType"
-                    value="DSE"
-                    checked={this.state.studentType === "DSE"}
+                    type="text"
+                    class="form-control"
+                    name="mobileNo"
+                    id="mobileNo"
+                    value={this.state.mobileNo}
                     onChange={this.onChange}
+                    // required
                   />
-                  Direct Second Year
-                </label>
+                </div>
               </div>
             </div>
-          </div>
-          <br />
-          <input
-            type="submit"
-            value="ADD"
-            class="btn btn-default"
-            id="addstudent"
-          />
-        </form>
-      </div>
+
+            {/*<!--third row-->*/}
+            <div class="row">
+              <div class="col-md-6">
+                <label for="emailID">Email ID:</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="email"
+                    id="emailID"
+                    value={this.state.email}
+                    onChange={this.onChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label htmlFor="selectBranch">Branch:</label>
+                <select
+                  id="selectBranch"
+                  name="branchId"
+                  value={this.state.branchId}
+                  onChange={this.onChange}
+                >
+                  <option value="">Select Branch</option>
+                  {branchList}
+                </select>
+              </div>
+            </div>
+
+            {/* <!--fourth row--> */}
+            <div class="row">
+              <div class="col-md-6">
+                <label for="password">Enter Password:</label>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    id="password"
+                    value={this.state.password}
+                    onChange={this.onChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="password">Re-Enter Password:</label>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="repassword"
+                    id="repassword"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* <!--fifth row--> */}
+            <div class="row">
+              <div class="col-md-6">
+                <label htmlFor="degreeType">Degree Type:</label>
+                <select
+                  id="degreeType"
+                  name="degreeId"
+                  value={this.state.degreeId}
+                  onChange={this.onChange}
+                >
+                  <option value="">Select Degree</option>
+
+                  {degreeList}
+                </select>
+              </div>
+
+              <div class="col-md-6">
+                <label for="password">ERP ID</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="erpId"
+                    id="erpId"
+                    value={this.state.erpId}
+                    onChange={this.onChange}
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* <!--sixth row--> */}
+            <div class="row">
+              <div class="col-md-6">
+                <label>Admission Type:</label>
+                <br />
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      name="studentType"
+                      value="Regular"
+                      checked={this.state.studentType === "Regular"}
+                      onChange={this.onChange}
+                    />
+                    Regular
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      name="studentType"
+                      value="DSE"
+                      checked={this.state.studentType === "DSE"}
+                      onChange={this.onChange}
+                    />
+                    Direct Second Year
+                  </label>
+                </div>
+              </div>
+            </div>
+            <br />
+            <input
+              type="submit"
+              value="ADD"
+              className="btn btn-default"
+              id="addstudent"
+            />
+          </form>
+        </div>
+      </React.Fragment>
     );
   }
 }

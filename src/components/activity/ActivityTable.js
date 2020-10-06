@@ -1,6 +1,13 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { deleteActivity } from "../../actions/activityAction";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
 class ActivityTable extends Component {
+ 
+
   render() {
     const activities = this.props.activities;
     return (
@@ -22,7 +29,7 @@ class ActivityTable extends Component {
               <td>{activity.Category.categoryName}</td>
               <td>{activity.sDate}</td>
               <td>
-                <a href="">View more</a>
+                <Link to={`/activityView/${activity.id}`}>View more</Link>
               </td>
               <td>
                 <span
@@ -31,6 +38,7 @@ class ActivityTable extends Component {
                   class="fa fa-pencil"
                   title="Edit"
                 ></span>
+                <FontAwesomeIcon icon="pencil-alt" id="editbtn" title="Edit" />
               </td>
               <td>
                 <span
@@ -38,6 +46,7 @@ class ActivityTable extends Component {
                   class="fa fa-trash-o"
                   title="Delete"
                 ></span>
+               
               </td>
             </tr>
           ))}
@@ -47,4 +56,8 @@ class ActivityTable extends Component {
   }
 }
 
-export default ActivityTable;
+ActivityTable.propTypes = {
+  deleteActivity: PropTypes.func.isRequired,
+};
+
+export default connect(null, { deleteActivity })(ActivityTable);

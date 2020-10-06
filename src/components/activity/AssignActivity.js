@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getCategories } from "../../actions/categoryAction";
 import { getActivities, assignActFact } from "../../actions/activityAction";
 import { getFaculties } from "../../actions/facultyAction";
+import Header from "../layout/header";
 
 class AssignActivity extends Component {
   constructor() {
@@ -23,47 +24,6 @@ class AssignActivity extends Component {
     console.log(e.target);
     this.setState({ [e.target.name]: e.target.value });
   };
-
-  //handleChange = (e) => {
-  //console.log(e[0].value);
-  //   this.setState({ facultyIds: [...this.state.facultyIds, e[0].value] });
-  //   value.push(e[0].value);
-  //   console.log(value);
-  // this.setState({
-  //   facultyIds: Array.from(
-  //     e.target.selectedOptions,
-  //     (option) => option.value
-  //   ),
-  // });
-  //   this.setState({ facultyIds: value });
-  //   var options = e[0].value;
-  //   var value = [];
-  //   for (var i = 0, l = options.length; i < l; i++) {
-  //     value.push(options[i].value);
-  //   }
-  //   this.setState({ facultyIds: value });
-  //   console.log(value);
-  //   this.setState({ facultyIds: value });
-  //   console.log(e.target);
-  //   this.setState({
-  //     // facultyIds: Array.from(
-  //     //   e.target.selectedOptions,
-  //     //   (option) => option.value
-  //     // ),
-  //     facultyIds: e.target.value,
-  //   });
-  //   for (var i = 0; i < 3; i++) {
-  //     console.log(e.target.value);
-  // };
-
-  //   let newItem = e[0].value;
-  //   let value = e.map((e) => e.value);
-  //   let value = [];
-  //   value.push(e.map((e) => e.value));
-  //   console.log(e.value);
-  //   this.setState({ facultyIds: value });
-  //   console.log(this.state.facultyIds);
-  // };
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -111,126 +71,106 @@ class AssignActivity extends Component {
         };
       });
     }
-    //console.log(facultyList);
-
-    // let optionList = [
-    //   {
-    //     value: 2,
-    //     label: "prachi",
-    //   },
-    //   {
-    //     value: 3,
-    //     label: "shailesh",
-    //   },
-    // ];
 
     return (
-      <div class="container">
-        <h4>Assign Faculty to Activity</h4>
+      <React.Fragment>
+        <Header />
+        <div class="container">
+          <h4>Assign Faculty to Activity</h4>
 
-        <hr size="2" />
-        {/*<!--CATEGORY NAME-->*/}
-        <div class="row">
-          <div class="col-md-8">
-            <label for="categoryDropdown">Category:</label>
-            <select id="categoryDropdown">
-              {/* <!--DEMO DATA-->*/}
-              <option value="">Select Category</option>
-              {categoryList}
-            </select>
-          </div>
-        </div>
-
-        <br />
-
-        {/* <!--ACTIVITY NAME--> */}
-        <div class="row">
-          <div class="col-md-8">
-            <label for="activityDropdown">Activity:</label>
-            <select
-              id="activityDropdown"
-              name="activityDetailId"
-              value={this.state.activityDetailId}
-              onChange={this.onChange}
-            >
-              {/*<!--DEMO DATA-->*/}
-              <option value="">Select Activity</option>
-              {activityList}
-            </select>
-          </div>
-        </div>
-        <br />
-
-        <div class="row">
-          <div class="col-md-8">
-            <label htmlFor="multipleFaculty">Select Faculties:</label>
-            {/* <MultiSelect
-              //isMulti
-              //isSearchable
-              //isClearable
-              //name="facultyIds"
-              //className="basic-multi-select"
-              //classNamePrefix="select"
-              //value={this.state.facultyIds}
-              //onChange= {this.handleChange}
-              //defaultValue={this.state.facultyIds}
-              options={facultyList}
-              selected={this.state.facultyIds}
-              onSelectedChanged={(facultyIds) => this.setState({ facultyIds })}
-            /> */}
-            <MultiSelect
-              options={facultyList}
-              selected={this.state.facultyIds}
-              onSelectedChanged={(facultyIds) => this.setState({ facultyIds })}
-              value={this.state.facultyIds}
-            />
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-md-8">
-            <label>Access for Student:</label>
-            <br />
-            <div class="custom-control custom-radio custom-control-inline">
-              <input
-                type="radio"
-                class="custom-control-input"
-                id="alldept"
-                name="forAll"
-                value={0}
-                checked={this.state.forAll === 0}
-                onChange={this.onChange}
-              />
-              <label class="custom-control-label" htmlFor="alldept">
-                All Departments
-              </label>
-            </div>
-            <div class="custom-control custom-radio custom-control-inline">
-              <input
-                type="radio"
-                class="custom-control-input"
-                id="onedept"
-                name="forAll"
-                value={1}
-                checked={this.state.forAll === 1}
-                onChange={this.onChange}
-              />
-              <label class="custom-control-label" htmlFor="onedept">
-                Only their department
-              </label>
+          <hr size="2" />
+          {/*<!--CATEGORY NAME-->*/}
+          <div class="row">
+            <div class="col-md-8">
+              <label for="categoryDropdown">Category:</label>
+              <select id="categoryDropdown">
+                {/* <!--DEMO DATA-->*/}
+                <option value="">Select Category</option>
+                {categoryList}
+              </select>
             </div>
           </div>
-        </div>
 
-        <br />
-        <input
-          type="submit"
-          value="ASSIGN"
-          class="btn btn-default"
-          id="assignFaculty"
-          onClick={this.onSubmit}
-        />
-      </div>
+          <br />
+
+          {/* <!--ACTIVITY NAME--> */}
+          <div class="row">
+            <div class="col-md-8">
+              <label for="activityDropdown">Activity:</label>
+              <select
+                id="activityDropdown"
+                name="activityDetailId"
+                value={this.state.activityDetailId}
+                onChange={this.onChange}
+              >
+                {/*<!--DEMO DATA-->*/}
+                <option value="">Select Activity</option>
+                {activityList}
+              </select>
+            </div>
+          </div>
+          <br />
+
+          <div class="row">
+            <div class="col-md-8">
+              <label htmlFor="multipleFaculty">Select Faculties:</label>
+
+              <MultiSelect
+                options={facultyList}
+                selected={this.state.facultyIds}
+                onSelectedChanged={(facultyIds) =>
+                  this.setState({ facultyIds })
+                }
+                value={this.state.facultyIds}
+              />
+            </div>
+          </div>
+          <br />
+          <div class="row">
+            <div class="col-md-8">
+              <label>Access for Student:</label>
+              <br />
+              <div class="custom-control custom-radio custom-control-inline">
+                <input
+                  type="radio"
+                  class="custom-control-input"
+                  id="alldept"
+                  name="forAll"
+                  value={0}
+                  checked={this.state.forAll === 0}
+                  onChange={this.onChange}
+                />
+                <label class="custom-control-label" htmlFor="alldept">
+                  All Departments
+                </label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input
+                  type="radio"
+                  class="custom-control-input"
+                  id="onedept"
+                  name="forAll"
+                  value={1}
+                  checked={this.state.forAll === 1}
+                  onChange={this.onChange}
+                />
+                <label class="custom-control-label" htmlFor="onedept">
+                  Only their department
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <br />
+          <input
+            type="submit"
+            value="ASSIGN"
+            class="btn btn-default"
+            id="assignFaculty"
+            onClick={this.onSubmit}
+          />
+        </div>
+      </React.Fragment>
     );
   }
 }

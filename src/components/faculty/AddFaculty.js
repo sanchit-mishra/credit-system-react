@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { addFaculty } from "../../actions/facultyAction";
 import { getBranches } from "../../actions/branchAction";
+import Header from "../layout/header";
 
 class AddFaculty extends Component {
   constructor() {
@@ -52,82 +53,85 @@ class AddFaculty extends Component {
         );
       }, this);
     return (
-      <div className="container">
-        <h4>Enter Faculty Details</h4>
+      <React.Fragment>
+        <Header />
+        <div className="container">
+          <h4>Enter Faculty Details</h4>
 
-        <hr size="2" />
+          <hr size="2" />
 
-        {/* <!-----------------FORMS STARTS HERE-------------------------> */}
+          {/* <!-----------------FORMS STARTS HERE-------------------------> */}
 
-        <form onSubmit={this.onSubmit}>
-          <div className="row">
-            <div className="col-md-6">
-              <label for="facultyName">Faculty Name:</label>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="name"
-                  id="facultyName"
-                  placeholder="Enter Faculty Name"
-                  value={this.state.name}
+          <form onSubmit={this.onSubmit}>
+            <div className="row">
+              <div className="col-md-6">
+                <label for="facultyName">Faculty Name:</label>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="name"
+                    id="facultyName"
+                    placeholder="Enter Faculty Name"
+                    value={this.state.name}
+                    onChange={this.onChange}
+                  />
+                </div>
+              </div>
+              <div className="col-md-6">
+                <label for="selectBranch">Branch:</label>
+                <select
+                  id="selectBranch"
+                  name="branchId"
+                  value={this.state.branchId}
                   onChange={this.onChange}
-                />
+                >
+                  <option value="">Select Branch</option>
+                  {branchList}
+                </select>
               </div>
             </div>
-            <div className="col-md-6">
-              <label for="selectBranch">Branch:</label>
-              <select
-                id="selectBranch"
-                name="branchId"
-                value={this.state.branchId}
-                onChange={this.onChange}
-              >
-                <option value="">Select Branch</option>
-                {branchList}
-              </select>
-            </div>
-          </div>
-          <br />
-          <div className="row">
-            <div className="col-md-6">
-              <label for="emailID">Email ID:</label>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  name="email"
-                  id="emailID"
-                  placeholder="Enter Email ID"
-                  value={this.state.email}
-                  onChange={this.onChange}
-                />
+            <br />
+            <div className="row">
+              <div className="col-md-6">
+                <label for="emailID">Email ID:</label>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="email"
+                    id="emailID"
+                    placeholder="Enter Email ID"
+                    value={this.state.email}
+                    onChange={this.onChange}
+                  />
+                </div>
+              </div>
+
+              <div className="col-md-6">
+                <label for="Password">Password:</label>
+                <div className="form-group">
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    id="Password"
+                    placeholder="Enter Password"
+                    value={this.state.password}
+                    onChange={this.onChange}
+                  />
+                </div>
               </div>
             </div>
+            <br />
 
-            <div className="col-md-6">
-              <label for="Password">Password:</label>
-              <div className="form-group">
-                <input
-                  type="password"
-                  className="form-control"
-                  name="password"
-                  id="Password"
-                  placeholder="Enter Password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                />
-              </div>
-            </div>
-          </div>
-          <br />
-
-          {/* <!--BUTTON TO ADD --> */}
-          <button className="btn btn-default" id="addBranch">
-            ADD
-          </button>
-        </form>
-      </div>
+            {/* <!--BUTTON TO ADD --> */}
+            <button className="btn btn-default" id="addBranch">
+              ADD
+            </button>
+          </form>
+        </div>
+      </React.Fragment>
     );
   }
 }

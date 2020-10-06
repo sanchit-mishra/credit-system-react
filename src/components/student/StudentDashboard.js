@@ -5,6 +5,7 @@ import StudentTable from "./StudentTable";
 import PropTypes from "prop-types";
 import { getStudents } from "../../actions/studentAction";
 import { connect } from "react-redux";
+import Header from "../layout/header";
 
 class StudentDashboard extends Component {
   componentDidMount() {
@@ -13,20 +14,23 @@ class StudentDashboard extends Component {
   render() {
     const { students } = this.props.student;
     return (
-      <div class="container">
-        <h4>Student</h4>
-        <br />
+      <React.Fragment>
+        <Header />
+        <div class="container">
+          <h4>Student</h4>
+          <br />
 
-        <Link to="/addStudent">
-          <button class="btn btn-default" id="addStudent">
-            Add Student <FontAwesomeIcon icon="plus" />
-          </button>
-        </Link>
+          <Link to="/addStudent">
+            <button class="btn btn-default" id="addStudent">
+              Add Student <FontAwesomeIcon icon="plus" />
+            </button>
+          </Link>
 
-        <hr size="2" />
+          <hr size="2" />
 
-        <StudentTable students={students} />
-      </div>
+          <StudentTable students={students} />
+        </div>
+      </React.Fragment>
     );
   }
 }

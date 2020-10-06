@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getFaculty, updateFaculty } from "../../actions/facultyAction";
 import { getBranches } from "../../actions/branchAction";
+import Header from "../layout/header";
 
 class UpdateFaculty extends Component {
   constructor() {
@@ -65,70 +66,73 @@ class UpdateFaculty extends Component {
     });
 
     return (
-      <div class="container">
-        <h4> Edit Faculty Details</h4>
-        <hr size="2" />
+      <React.Fragment>
+        <Header />
+        <div class="container">
+          <h4> Edit Faculty Details</h4>
+          <hr size="2" />
 
-        <form>
-          <label>Faculty Name:</label>
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-control"
-              name="name"
-              id=""
-              value={this.state.name}
-              onChange={this.onChange}
-              placeholder="Enter Faculty Name"
-            />
-            <br />
-            <label>Branch:</label>
-            <select
-              id="selectBranch"
-              name="branchId"
-              value={this.state.branchId}
-              onChange={this.onChange}
-            >
-              {branchList}
-            </select>
-
-            <br />
-            <label>Email ID:</label>
+          <form>
+            <label>Faculty Name:</label>
             <div class="form-group">
               <input
                 type="text"
                 class="form-control"
-                name="email"
+                name="name"
                 id=""
-                value={this.state.email}
+                value={this.state.name}
                 onChange={this.onChange}
-                placeholder="Enter Email ID"
+                placeholder="Enter Faculty Name"
               />
               <br />
-              <label>Password:</label>
+              <label>Branch:</label>
+              <select
+                id="selectBranch"
+                name="branchId"
+                value={this.state.branchId}
+                onChange={this.onChange}
+              >
+                {branchList}
+              </select>
+
+              <br />
+              <label>Email ID:</label>
               <div class="form-group">
                 <input
                   type="text"
                   class="form-control"
-                  name="password"
+                  name="email"
                   id=""
-                  value={this.state.password}
+                  value={this.state.email}
                   onChange={this.onChange}
-                  placeholder="Enter Password"
+                  placeholder="Enter Email ID"
                 />
                 <br />
-                <button
-                  class="btn btn-default"
-                  id="addBranch"
-                  onClick={this.onSubmit}
-                >
-                  Update Faculty{" "}
-                </button>
+                <label>Password:</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="password"
+                    id=""
+                    value={this.state.password}
+                    onChange={this.onChange}
+                    placeholder="Enter Password"
+                  />
+                  <br />
+                  <button
+                    class="btn btn-default"
+                    id="addBranch"
+                    onClick={this.onSubmit}
+                  >
+                    Update Faculty{" "}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        </form>
-      </div>
+          </form>
+        </div>
+      </React.Fragment>
     );
   }
 }

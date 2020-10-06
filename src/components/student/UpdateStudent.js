@@ -4,6 +4,7 @@ import { getBranches } from "../../actions/branchAction";
 import { getDegrees } from "../../actions/degreeAction";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Header from "../layout/header";
 
 class UpdateStudent extends Component {
   constructor() {
@@ -92,15 +93,17 @@ class UpdateStudent extends Component {
       );
     });
     return (
-      <div class="container">
-        <h4>Enter Student Details</h4>
+      <React.Fragment>
+        <Header />
+        <div class="container">
+          <h4>Enter Student Details</h4>
 
-        <hr size="2" />
+          <hr size="2" />
 
-        <form onSubmit={this.onSubmit}>
-          {/*<!--first row-->*/}
-          <div class="row">
-            {/* <div class="col-md-2">
+          <form onSubmit={this.onSubmit}>
+            {/*<!--first row-->*/}
+            <div class="row">
+              {/* <div class="col-md-2">
               <label for="RollNo">Roll Number:</label>
               <div class="form-group">
                 <input
@@ -112,91 +115,91 @@ class UpdateStudent extends Component {
                 />
               </div>
     </div> */}
-          </div>
+            </div>
 
-          {/* <!--second row--> */}
-          <div class="row">
-            <div class="col-md-6">
-              <label for="StudentName">Student Name:</label>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="name"
-                  id="StudentName"
-                  value={this.state.name}
-                  onChange={this.onChange}
-                  required
-                />
+            {/* <!--second row--> */}
+            <div class="row">
+              <div class="col-md-6">
+                <label for="StudentName">Student Name:</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="name"
+                    id="StudentName"
+                    value={this.state.name}
+                    onChange={this.onChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="mobileNo">Mobile Number:</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="mobileNo"
+                    id="mobileNo"
+                    value={this.state.mobileNo}
+                    onChange={this.onChange}
+                    // required
+                  />
+                </div>
               </div>
             </div>
 
-            <div class="col-md-6">
-              <label for="mobileNo">Mobile Number:</label>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="mobileNo"
-                  id="mobileNo"
-                  value={this.state.mobileNo}
-                  onChange={this.onChange}
-                  // required
-                />
+            {/*<!--third row-->*/}
+            <div class="row">
+              <div class="col-md-6">
+                <label for="emailID">Email ID:</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="email"
+                    id="emailID"
+                    value={this.state.email}
+                    onChange={this.onChange}
+                    required
+                  />
+                </div>
               </div>
-            </div>
-          </div>
 
-          {/*<!--third row-->*/}
-          <div class="row">
-            <div class="col-md-6">
-              <label for="emailID">Email ID:</label>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  name="email"
-                  id="emailID"
-                  value={this.state.email}
+              <div class="col-md-6">
+                <label for="selectBranch">Branch:</label>
+                <select
+                  id="selectBranch"
+                  name="branchId"
+                  value={this.state.branchId}
                   onChange={this.onChange}
-                  required
-                />
-              </div>
-            </div>
-
-            <div class="col-md-6">
-              <label for="selectBranch">Branch:</label>
-              <select
-                id="selectBranch"
-                name="branchId"
-                value={this.state.branchId}
-                onChange={this.onChange}
-              >
-                <option value="">Select Branch</option>
-                {branchList}
-              </select>
-            </div>
-          </div>
-
-          {/* <!--fourth row--> */}
-          <div class="row">
-            <div class="col-md-6">
-              <label for="password">Enter Password:</label>
-              <div class="form-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  name="password"
-                  id="password"
-                  value={this.state.password}
-                  onChange={this.onChange}
-                  required
-                />
+                >
+                  <option value="">Select Branch</option>
+                  {branchList}
+                </select>
               </div>
             </div>
 
-            <div class="col-md-6">
-              {/* <label for="password">Re-Enter Password:</label>
+            {/* <!--fourth row--> */}
+            <div class="row">
+              <div class="col-md-6">
+                <label for="password">Enter Password:</label>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    id="password"
+                    value={this.state.password}
+                    onChange={this.onChange}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                {/* <label for="password">Re-Enter Password:</label>
               <div class="form-group">
                 <input
                   type="password"
@@ -206,68 +209,69 @@ class UpdateStudent extends Component {
                   required
                 />
 </div> */}
-            </div>
-          </div>
-
-          {/* <!--fifth row--> */}
-          <div class="row">
-            <div class="col-md-6">
-              <label for="degreeType">Degree Type:</label>
-              <select
-                id="degreeType"
-                name="degreeId"
-                value={this.state.degreeId}
-                onChange={this.onChange}
-              >
-                <option value="">Select Degree</option>
-
-                {degreeList}
-              </select>
-            </div>
-          </div>
-
-          {/* <!--sixth row--> */}
-          <div class="row">
-            <div class="col-md-6">
-              <label>Admission Type:</label>
-              <br />
-              <div class="form-check-inline">
-                <label class="form-check-label">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    name="studentType"
-                    value="Regular"
-                    checked={this.state.studentType === "Regular"}
-                    onChange={this.onChange}
-                  />
-                  Regular
-                </label>
-              </div>
-              <div class="form-check-inline">
-                <label class="form-check-label">
-                  <input
-                    type="radio"
-                    class="form-check-input"
-                    name="studentType"
-                    value="Direct Second Year"
-                    checked={this.state.studentType === "Direct Second Year"}
-                    onChange={this.onChange}
-                  />
-                  Direct Second Year
-                </label>
               </div>
             </div>
-          </div>
-          <br />
-          <input
-            type="submit"
-            value="ADD"
-            class="btn btn-default"
-            id="addstudent"
-          />
-        </form>
-      </div>
+
+            {/* <!--fifth row--> */}
+            <div class="row">
+              <div class="col-md-6">
+                <label for="degreeType">Degree Type:</label>
+                <select
+                  id="degreeType"
+                  name="degreeId"
+                  value={this.state.degreeId}
+                  onChange={this.onChange}
+                >
+                  <option value="">Select Degree</option>
+
+                  {degreeList}
+                </select>
+              </div>
+            </div>
+
+            {/* <!--sixth row--> */}
+            <div class="row">
+              <div class="col-md-6">
+                <label>Admission Type:</label>
+                <br />
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      name="studentType"
+                      value="Regular"
+                      checked={this.state.studentType === "Regular"}
+                      onChange={this.onChange}
+                    />
+                    Regular
+                  </label>
+                </div>
+                <div class="form-check-inline">
+                  <label class="form-check-label">
+                    <input
+                      type="radio"
+                      class="form-check-input"
+                      name="studentType"
+                      value="Direct Second Year"
+                      checked={this.state.studentType === "Direct Second Year"}
+                      onChange={this.onChange}
+                    />
+                    Direct Second Year
+                  </label>
+                </div>
+              </div>
+            </div>
+            <br />
+            <input
+              type="submit"
+              value="ADD"
+              class="btn btn-default"
+              id="addstudent"
+            />
+          </form>
+        </div>
+      </React.Fragment>
     );
   }
 }

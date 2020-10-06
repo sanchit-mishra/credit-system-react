@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import AddBranch from "./AddBranch";
 import BranchTable from "./BranchTable";
+import Header from "../layout/header";
 
 class BranchDashboard extends Component {
   componentDidMount() {
@@ -17,14 +18,17 @@ class BranchDashboard extends Component {
     const { branches } = this.props.branch;
 
     return (
-      <div className="container">
-        <h4>Branch</h4>
-        <br />
-        <AddBranch />
-        <br />
+      <React.Fragment>
+        <Header />
+        <div className="container">
+          <h4>Branch</h4>
+          <br />
+          <AddBranch />
+          <br />
 
-        <BranchTable branches={branches} />
-      </div>
+          <BranchTable branches={branches} />
+        </div>
+      </React.Fragment>
     );
   }
 }

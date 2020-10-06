@@ -16,9 +16,9 @@ class Header extends Component {
         <Link to="/activityDashboard">Activity</Link>
 
         {/*<a style="float: right">Hello,<b> Admin !</b></a>
-      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-        <i class="fa fa-bars"></i>
-    </a> */}
+  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+    <i class="fa fa-bars"></i>
+</a> */}
       </div>
     );
   }

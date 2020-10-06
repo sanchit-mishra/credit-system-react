@@ -28,3 +28,11 @@ export const GET_CATEGORIES = "GET_CATEGORIES";
 //Activity Actions
 export const GET_ACTIVITY = "GET_ACTIVITY";
 export const GET_ACTIVITIES = "GET_ACTIVITIES";
+export const DELETE_ACTIVITY = "DELETE_ACTIVITY";
+
+//Activity + Category Actions
+export const GET_ACTIVITIES_CATEGORIES = "GET_ACTIVITIES_CATEGORIES";
+export const GET_ACTIVITY_CATEGORY = "GET_ACTIVITY_CATEGORY";
+
+//Enroll Action
+export const GET_ENROLL_STATUS = "GET_ENROLL_STATUS";

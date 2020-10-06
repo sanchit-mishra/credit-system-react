@@ -4,6 +4,7 @@ import DegreeeTable from "./DegreeTable";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getDegrees } from "../../actions/degreeAction";
+import Header from "../layout/header";
 
 class DegreeDashboard extends Component {
   componentDidMount() {
@@ -17,15 +18,18 @@ class DegreeDashboard extends Component {
   render() {
     const { degrees } = this.props.degree;
     return (
-      <div class="container">
-        <h4>Degree</h4>
-        <br />
-        <AddDegree />
-        <hr size="2" />
-        <br />
+      <React.Fragment>
+        <Header />
+        <div class="container">
+          <h4>Degree</h4>
+          <br />
+          <AddDegree />
+          <hr size="2" />
+          <br />
 
-        <DegreeeTable degrees={degrees} />
-      </div>
+          <DegreeeTable degrees={degrees} />
+        </div>
+      </React.Fragment>
     );
   }
 }

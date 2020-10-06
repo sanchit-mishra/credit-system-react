@@ -23,18 +23,19 @@ class StudentTable extends Component {
               <th>EmailID</th>
               <th>Mobile No</th>
               <th>Admission Type</th>
-              <td>Degree</td>
-              <td></td>
+              <th>Degree</th>
+              <th>ERP ID</th>
             </tr>
           </thead>
           {students.map((student) => (
             <tr>
               <td>{student.name}</td>
-              <td>{student.branchId}</td>
+              <td>{student.Branch.branchName}</td>
               <td>{student.email}</td>
               <td>{student.mobileNo}</td>
               <td>{student.studentType}</td>
-              <td>{student.degreeId}</td>
+              <td>{student.Degree.degreeName}</td>
+              <td>{student.erpId}</td>
               <td>
                 <Link to={`/updateStudent/${student.id}`}>
                   <FontAwesomeIcon
