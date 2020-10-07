@@ -20,10 +20,16 @@ class Landing extends Component {
                   Admin Redirect
                 </Link>
                 <Link
-                  to="/enrollStudentActivity"
+                  to="/studentProfile"
                   className="btn btn-lg btn-secondary mr-2"
                 >
                   Student Redirect
+                </Link>
+                <Link
+                  to="/facultyProfile"
+                  className="btn btn-lg btn-primary mr-2"
+                >
+                  Faculty Redirect
                 </Link>
               </div>
             </div>

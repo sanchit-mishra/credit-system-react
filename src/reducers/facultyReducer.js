@@ -1,8 +1,14 @@
-import { GET_FACULTY, GET_FACULTIES, DELETE_FACULTY } from "../actions/types";
+import {
+  GET_FACULTY,
+  GET_FACULTIES,
+  DELETE_FACULTY,
+  GET_ALLOTED_ACTIVITY,
+} from "../actions/types";
 
 const initialState = {
   faculty: {},
   faculties: [],
+  facultyActivityAlloted: {},
 };
 
 export default function (state = initialState, action) {
@@ -23,6 +29,11 @@ export default function (state = initialState, action) {
         faculties: state.faculties.filter(
           (faculty) => faculty.id !== action.payload
         ),
+      };
+    case GET_ALLOTED_ACTIVITY:
+      return {
+        ...state,
+        facultyActivityAlloted: action.payload,
       };
     default:
       return state;

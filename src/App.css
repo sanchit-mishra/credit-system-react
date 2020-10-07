@@ -54,8 +54,7 @@ a.userWelcome {
   border: 1px solid #bfbfbf;
   box-shadow: 5px 3px 5px #d8d8d8;
   width: 80%;
-  margin-left: 13%;
-  background-color: white;
+  margin-left: 12.5%;
 }
 
 .cards {
@@ -131,8 +130,7 @@ a.userWelcome {
 #addactivity,
 #mapfaculty,
 #addCategoryModal,
-#assignFaculty,
-#addstudent {
+#assignFaculty {
   background-color: #61b7a2;
   color: white;
   outline: none;
@@ -148,8 +146,7 @@ a.userWelcome {
 #addactivity:hover,
 #mapfaculty:hover,
 #addCategoryModal:hover,
-#assignFaculty:hover,
-#addstudent:hover {
+#assignFaculty:hover {
   background-color: #47796b;
 }
 
@@ -169,8 +166,9 @@ a.userWelcome {
   float: right;
   border-radius: 25px;
   border: 0.5px solid rgb(117, 117, 117);
-  padding: 3px 3px 3px 15px;
+  padding: 0px 0px 0px 15px;
   outline: none;
+  font-size: 14px;
   margin-right: 5px;
 }
 
@@ -180,9 +178,7 @@ select {
   border-radius: 5px;
   outline: none;
 }
-
-#selectBranch,
-#degreeType {
+#selectBranch {
   width: 100%;
   padding: 7px 20px;
   display: inline-block;
@@ -191,7 +187,9 @@ select {
   box-sizing: border-box;
   margin-bottom: 20px;
 }
-
+#search {
+  font-size: 14px;
+}
 .fa:hover {
   font-weight: 600;
 }
@@ -464,6 +462,39 @@ progress::-webkit-progress-bar {
   background-color: rgb(230, 230, 230);
   border: 1px solid grey;
   font-size: 13px;
+}
+
+#actName {
+  border: 1px solid grey;
+  margin: 3px 3px 0px 3px;
+}
+#listOfAct {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.actCard {
+  margin: 20px 10px 0px 10px;
+  width: 300px;
+  border: 1px solid rgb(204, 203, 203);
+  padding: 5px 5px 5px 5px;
+  cursor: pointer;
+}
+
+.actCard:hover {
+  box-shadow: 3px 3px 3px #e9e9e9;
+}
+.actCard p {
+  color: grey;
+  font-size: 14px;
+}
+
+select {
+  padding: 5px 20px;
+}
+
+#sortdrp {
+  font-size: 14px;
 }
 @media screen and (max-width: 992px) {
   .header a:not(:first-child) {

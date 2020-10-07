@@ -21,37 +21,14 @@ class ActivityView extends Component {
     let facultyArray = activityCategory.Faculties;
     console.log(facultyArray);
 
-    //const facultyNames = facultyArray.map((faculty) => (
-    //  <div className="facultyName">{faculty.name}</div>
-    //));
+    const facultyNames =
+      facultyArray &&
+      facultyArray.map((faculty) => (
+        <div className="facultyName">{faculty.name}</div>
+      ));
 
-    // const category = activityCategory.map((activity) => activity.title);
-    // console.log(category);
     const docRequired = activityCategory.docRequired ? "Yes" : "No";
-    //console.log(activityCategory.Faculties[0].name);
-    // let FacultyNameList = facultyArray.map((faculty) => faculty.name);
-    // for (let i = 0; i < facultyArray; i++) {
-    //   if (facultyArray[i].name.length > 1) {
-    //     FacultyNameList.push(facultyArray[i].name);
-    //   }
-    // }
-    //console.log(FacultyNameList);
 
-    //console.log(activityCategory);
-    //console.log(activityCategory.Category);
-    //console.log(activityCategory.Category.categoryName);
-    // console.log(activityCategory.Faculties.name);
-    //const Faculties = [...activityCategory.Faculties];
-    //const Faculties = activityCategory.Faculties.slice();
-    //console.log(Faculties);
-    //let { Category } = activityCategory;
-    //console.log(Category["categoryName"]);
-    //let facultiesName = Faculties.map((faculty) => faculty.name);
-
-    // let facultiesName = activityCategory.Faculties.map(
-    //   (activity) => activity.name
-    // );
-    // console.log(facultiesName);
     return (
       <React.Fragment>
         <Header />
@@ -61,8 +38,8 @@ class ActivityView extends Component {
 
           <h5>{activityCategory.title}</h5>
           <div className="actDeails">
-            <b>Category: </b>
-            <br />
+            {/*<b>Category: </b>
+            <br />*/}
             <br />
             <b>Start Date:</b> {activityCategory.sDate}
             <br />
@@ -77,12 +54,7 @@ class ActivityView extends Component {
             <br />
             <b>Faculty Associated:</b>
             <br />
-            <div className="facultyassoc">
-              <div className="facultyName">Neha Desai (CMPN)</div>
-              <div className="facultyName">Sanchit Mishra (CMPN)</div>
-              <div className="facultyName">Omkar Sawant (CMPN)</div>
-              <div className="facultyName">Bimlesh(CMPN)</div>
-            </div>
+            <div className="facultyassoc">{facultyNames}</div>
           </div>
 
           <br />

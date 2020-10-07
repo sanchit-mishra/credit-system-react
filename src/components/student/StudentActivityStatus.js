@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
-import SideNav from "./SideNav";
-import TopNav from "./TopNav";
+import SideNav from "./StudentSideNav";
+import TopNav from "./StudentTopNav";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {

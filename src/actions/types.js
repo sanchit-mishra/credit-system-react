@@ -11,6 +11,9 @@ export const GET_BRANCH = "GET_BRANCH";
 export const GET_BRANCHES = "GET_BRANCHES";
 export const DELETE_BRANCH = "DELETE_BRANCH";
 
+//Semester Action
+export const GET_SEMESTERS = "GET_SEMESTERS";
+
 //Degree Actions
 export const GET_DEGREE = "GET_DEGREE";
 export const GET_DEGREES = "GET_DEGREES";
@@ -34,6 +37,10 @@ export const DELETE_ACTIVITY = "DELETE_ACTIVITY";
 export const GET_ACTIVITIES_CATEGORIES = "GET_ACTIVITIES_CATEGORIES";
 export const GET_ACTIVITY_CATEGORY = "GET_ACTIVITY_CATEGORY";
 
-//Enroll Action
+//Activity Enroll Student Action
 export const GET_ENROLL_STATUS = "GET_ENROLL_STATUS";
 export const DELETE_ENROLL = "DELETE_ENROLL";
+
+//Student Activity Action By Faculty
+export const GET_ALLOTED_ACTIVITY = "GET_ALLOTED_ACTIVITY";
+export const GET_PENDING_ENROLL_STUDENT = "GET_PENDING_ENROLL_STUDENT";

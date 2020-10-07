@@ -6,12 +6,16 @@ import degreeReducer from "./degreeReducer";
 import studentReducer from "./studentReducer";
 import categoryReducer from "./categoryReducer";
 import activityReducer from "./activityReducer";
+import semesterReducer from "./semesterReducer";
+import facultyOperationReducer from "./facultyOperationReducer";
 
 /* Combining all reducers */
 export default combineReducers({
   faculty: facultyReducer,
+  facultyOperation: facultyOperationReducer,
   branch: branchReducer,
   degree: degreeReducer,
+  semester: semesterReducer,
   student: studentReducer,
   category: categoryReducer,
   activity: activityReducer,

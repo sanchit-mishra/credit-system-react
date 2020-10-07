@@ -24,6 +24,9 @@ import EnrollActivity from "./components/student/EnrollActivity";
 import Landing from "./components/layout/Landing";
 import StudentActivityStatus from "./components/student/StudentActivityStatus";
 import StudentLoginDash from "./components/student/StudentLoginDash";
+import FacultyLoginDash from "./components/faculty/FacultyLoginDash";
+import PendingApproval from "./components/faculty/PendingApproval";
+import RejectedStudent from "./components/faculty/RejectedStudent";
 
 function App() {
   return (
@@ -64,6 +67,18 @@ function App() {
             exact
             path="/studentActivityStatus"
             component={StudentActivityStatus}
+          />
+          {/* New Faculty Route */}
+          <Route exact path="/facultyProfile" component={FacultyLoginDash} />
+          <Route
+            exact
+            path="/pendingApproval/:id/:forAll"
+            component={PendingApproval}
+          />
+          <Route
+            exact
+            path="/rejectedStudent/:id"
+            component={RejectedStudent}
           />
         </div>
       </Router>

@@ -21,7 +21,7 @@ class AssignActivity extends Component {
   }
 
   onChange = (e) => {
-    console.log(e.target);
+    //console.log(e.target);
     this.setState({ [e.target.name]: e.target.value });
   };
 
@@ -136,8 +136,8 @@ class AssignActivity extends Component {
                   class="custom-control-input"
                   id="alldept"
                   name="forAll"
-                  value={0}
-                  checked={this.state.forAll === 0}
+                  value={1}
+                  checked={this.state.forAll === 1}
                   onChange={this.onChange}
                 />
                 <label class="custom-control-label" htmlFor="alldept">
@@ -150,8 +150,8 @@ class AssignActivity extends Component {
                   class="custom-control-input"
                   id="onedept"
                   name="forAll"
-                  value={1}
-                  checked={this.state.forAll === 1}
+                  value={0}
+                  checked={this.state.forAll === 0}
                   onChange={this.onChange}
                 />
                 <label class="custom-control-label" htmlFor="onedept">
