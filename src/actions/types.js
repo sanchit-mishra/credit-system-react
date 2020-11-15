@@ -1,10 +1,13 @@
+//Error Actions
+export const GET_ERROR = "GET_ERROR";
+
+//Login Action
+export const SET_USER = "SET_USER";
+
 //Faculty Actions
 export const GET_FACULTY = "GET_FACULTY";
 export const GET_FACULTIES = "GET_FACULTIES";
 export const DELETE_FACULTY = "DELETE_FACULTY";
-
-//Error Actions
-export const GET_ERROR = "GET_ERROR";
 
 //Branch Actions
 export const GET_BRANCH = "GET_BRANCH";
@@ -44,3 +47,4 @@ export const DELETE_ENROLL = "DELETE_ENROLL";
 //Student Activity Action By Faculty
 export const GET_ALLOTED_ACTIVITY = "GET_ALLOTED_ACTIVITY";
 export const GET_PENDING_ENROLL_STUDENT = "GET_PENDING_ENROLL_STUDENT";
+export const GET_APPROVED_STUDENT = "GET_APPROVED_STUDENT";

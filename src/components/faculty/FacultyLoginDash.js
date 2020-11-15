@@ -4,13 +4,52 @@ import FacultyTopNav from "./FacultyTopNav";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getAllotedActivities } from "../../actions/facultyActivityAction";
+import {getFaculty} from "../../actions/facultyAction";
 import { Link } from "react-router-dom";
 
 class FacultyLoginDash extends Component {
-  componentDidMount() {
-    this.props.getAllotedActivities(1);
-  }
 
+  // constructor(){
+  //   super();
+  //   this.state = {
+  //     id: "",
+  //     firstName: "",
+  //     middleName: "",
+  //     lastName: "",
+  //     DOB: "",
+  //     email: "",
+  //     mobileNo:"",
+  //     erpId: "",
+  //     password: "",
+  //     branchId: ""
+  //   }
+
+  // }
+
+  componentDidMount(){
+    const id = this.props.security.user.id;
+    this.props.getFaculty(id);
+    // if(this.props.faculty.faculty){
+    //   //console.log("hi");
+    //   const {id, firstName, middleName, lastName, DOB,email,mobileNo,erpId,password,branchId} = this.props.faculty.faculty;
+    //   this.setState({
+    //     id:id,
+    //     firstName,
+    //     middleName,
+    //     lastName,
+    //     DOB,
+    //     email,
+    //     mobileNo,
+    //     erpId,
+    //     password,
+    //     branchId
+    //   });
+
+    //}
+   //this.props.getAllotedActivities(id);
+
+  }
+  
   render() {
     const { ActivityDetails } = this.props.faculty.facultyActivityAlloted;
     //console.log(ActivityDetails);
@@ -31,11 +70,15 @@ class FacultyLoginDash extends Component {
           </div>
         </Link>
       ));
+      console.log(this.state);
+      const {firstName, lastName} = this.props.faculty.faculty;
+
     return (
       <React.Fragment>
         <FacultyDashSideNav />
         <div id="main" className="openmain">
-          <FacultyTopNav />
+      
+          <FacultyTopNav firstname={firstName} lastname = {lastName} />
           <div className="maindivs">
             <div className="row">
               <div className="col-md-9">
@@ -59,13 +102,16 @@ class FacultyLoginDash extends Component {
 
 FacultyLoginDash.propTypes = {
   getAllotedActivities: PropTypes.func.isRequired,
+  getFaculty:PropTypes.func.isRequired,
   faculty: PropTypes.object.isRequired,
+  security:PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   faculty: state.faculty,
+  security:state.security,
 });
 
-export default connect(mapStateToProps, { getAllotedActivities })(
+export default connect(mapStateToProps, { getAllotedActivities,getFaculty })(
   FacultyLoginDash
 );

@@ -1,6 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import {logout} from "../../actions/userAction";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
 
 class FacultyTopNav extends Component {
   constructor() {
@@ -19,14 +22,21 @@ class FacultyTopNav extends Component {
       mainDiv.classList.remove("closemain");
     }
   }
+
+  logout(){
+    this.props.logout();
+    window.location.href="/";
+  }
+  
   render() {
+    const firstname = this.props.firstname;
+    const lastname = this.props.lastname;
     return (
       <div className="topNav">
         <FontAwesomeIcon id="humMenu" icon="bars" onClick={this.closeNav} />
         <div className="profile">
-          <FontAwesomeIcon icon="user-circle" className="profileID" /> Neha
-          Desai!
-          <Link to="#" data-toggle="tooltip" title="Logout">
+          <FontAwesomeIcon icon="user-circle" className="profileID" />&nbsp; {firstname} {lastname} ! &nbsp;
+          <Link to="/" data-toggle="tooltip" title="Logout" onClick={this.logout.bind(this)}>
             <FontAwesomeIcon
               icon="power-off"
               className="profileID"
@@ -40,4 +50,8 @@ class FacultyTopNav extends Component {
   }
 }
 
-export default FacultyTopNav;
+FacultyTopNav.propTypes = {
+  logout:PropTypes.func.isRequired,
+}
+
+export default connect(null,{logout})(FacultyTopNav);

@@ -11,7 +11,13 @@ class AddStudent extends Component {
     super();
 
     this.state = {
-      name: "",
+      firstName: "",
+      middleName:"",
+      lastName:"",
+      DOB:"",
+      rollNo:"",
+      division:"",
+      year:"",
       email: "",
       password: "",
       mobileNo: "",
@@ -34,7 +40,13 @@ class AddStudent extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const newStudent = {
-      name: this.state.name,
+      firstName: this.state.firstName,
+      middleName:this.state.middleName,
+      lastName:this.state.lastName,
+      DOB:this.state.DOB,
+      rollNo:this.state.rollNo,
+      division:this.state.division,
+      year:this.state.year,
       email: this.state.email,
       password: this.state.password,
       mobileNo: this.state.mobileNo,
@@ -93,22 +105,53 @@ class AddStudent extends Component {
 
             {/* <!--second row--> */}
             <div class="row">
-              <div class="col-md-6">
-                <label for="StudentName">Student Name:</label>
+              <div class="col-md-4">
+                <label for="StudentName">First Name:</label>
                 <div class="form-group">
                   <input
                     type="text"
                     class="form-control"
-                    name="name"
+                    name="firstName"
                     id="StudentName"
-                    value={this.state.name}
+                    value={this.state.firstName}
                     onChange={this.onChange}
                     required
                   />
                 </div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-4">
+              <label for="StudentName">Middle Name:</label>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="middleName"
+                  id="StudentName"
+                  value={this.state.middleName}
+                  onChange={this.onChange}
+                  required
+                />
+              </div>
+              </div>
+              <div class="col-md-4">
+                <label for="StudentName">Last Name:</label>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="lastName"
+                    id="StudentName"
+                    value={this.state.lastName}
+                    onChange={this.onChange}
+                    required
+                  />
+                </div>
+              </div>
+              </div>
+            
+            <div className="row">
+              <div class="col-md-4">
                 <label for="mobileNo">Mobile Number:</label>
                 <div class="form-group">
                   <input

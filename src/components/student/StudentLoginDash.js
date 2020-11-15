@@ -1,14 +1,26 @@
 import React, { Component } from "react";
 import SideNav from "./StudentSideNav";
 import TopNav from "./StudentTopNav";
+import {connect} from "react-redux";
+import PropTypes from "prop-types";
+import {getStudent} from "../../actions/studentAction";
+
 
 class StudentLoginDash extends Component {
+
+  componentDidMount(){
+    const id = this.props.security.user.id;
+    this.props.getStudent(id);
+  }
+
+
   render() {
+    const {firstName, lastName} = this.props.student.student;
     return (
       <React.Fragment>
         <SideNav />
         <div id="main" className="openmain">
-          <TopNav />
+          <TopNav firstname={firstName} lastname={lastName} />
 
           <div class="row">
             <div class="col-md-6">
@@ -67,4 +79,15 @@ class StudentLoginDash extends Component {
   }
 }
 
-export default StudentLoginDash;
+StudentLoginDash.propTypes = {
+  student:PropTypes.object.isRequired,
+  getStudent:PropTypes.func.isRequired,
+}
+
+
+const mapStateToProps = (state) => ({
+  student:state.student,
+  security:state.security,
+})
+
+export default connect(mapStateToProps, {getStudent})(StudentLoginDash);

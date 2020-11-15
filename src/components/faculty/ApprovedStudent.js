@@ -7,7 +7,7 @@ import { getStudentsEnrolledActivity,approveStudentActivity } from "../../action
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-class PendingApproval extends Component {
+class RejectedStudent extends Component {
   constructor() {
     super();
     this.state = {
@@ -42,49 +42,49 @@ class PendingApproval extends Component {
     this.props.getBranches();
     this.props.getSemesters();
     const { id } = this.props.match.params;
-    const pendingData = {
+    const approveData = {
       facultyId: 1,
       activityDetailId: id,
-      status: null,
+      status: true,
       branchId: this.state.branchId,
       semesterId: this.state.semesterId,
     };
     //console.log(pendingData);
-    this.props.getStudentsEnrolledActivity(pendingData);
+    this.props.getStudentsEnrolledActivity(approveData);
   }
 
   componentWillReceiveProps(){
+
     const { id } = this.props.match.params;
-    const pendingData = {
+    const approveData = {
       facultyId: 1,
       activityDetailId: id,
-      status: null,
+      status: true,
       branchId: this.state.branchId,
       semesterId: this.state.semesterId,
     };
     //console.log(pendingData);
-    this.props.getStudentsEnrolledActivity(pendingData);
-  }
-
-
-  onApprove(id){
-    //console.log(id);
-    const approveStudent = {
-      activityId:id,
-      status:true,
-      comment:"",
-    }
-    this.props.approveStudentActivity(approveStudent,this.props.history);
+    this.props.getStudentsEnrolledActivity(approveData);
   }
 
   onReject(id){
     //console.log(id);
-    const approveStudent = {
+    const rejectStudent = {
       activityId:id,
       status:false,
       comment:"",
     }
-    this.props.approveStudentActivity(approveStudent,this.props.history);
+    this.props.approveStudentActivity(rejectStudent,this.props.history);
+  }
+
+  onPending(id){
+    //console.log(id);
+    const pendingStudent = {
+      activityId:id,
+      status:null,
+      comment:"",
+    }
+    this.props.approveStudentActivity(pendingStudent,this.props.history);
   }
 
   render() {
@@ -174,8 +174,8 @@ class PendingApproval extends Component {
             {docRequired ? (
               <button className="btn btn-primary mr-1">Display</button>
             ) : null}
-            <button className="btn btn-success mr-1" onClick={this.onApprove.bind(this,student.Activity.id)} >Approve</button>
             <button className="btn btn-danger mr-1" onClick={this.onReject.bind(this,student.Activity.id)}>Reject</button>
+            <button className="btn btn-info mr-1" onClick={this.onPending.bind(this,student.Activity.id)} >Add to Pending</button>
           </td>
         </tr>
       ));
@@ -188,7 +188,7 @@ class PendingApproval extends Component {
 
           {ToUse}
           <div className="maindivs">
-            <b>Approve Activity:</b> {title}
+            <b>Approved Student:</b> {title}
             <br />
             <br />
             <div className="table-responsive">
@@ -213,7 +213,7 @@ class PendingApproval extends Component {
   }
 }
 
-PendingApproval.propTypes = {
+RejectedStudent.propTypes = {
   getBranches: PropTypes.func.isRequired,
   branch: PropTypes.object.isRequired,
   getSemesters: PropTypes.func.isRequired,
@@ -234,4 +234,4 @@ export default connect(mapStateToProps, {
   getSemesters,
   getStudentsEnrolledActivity,
   approveStudentActivity
-})(PendingApproval);
+})(RejectedStudent);

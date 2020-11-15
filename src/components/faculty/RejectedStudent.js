@@ -1,44 +1,195 @@
 import React, { Component } from "react";
 import FacultySideNav from "./FacultySideNav";
 import FacultyTopNav from "./FacultyTopNav";
+import { getBranches } from "../../actions/branchAction";
+import { getSemesters } from "../../actions/semesterAction";
+import { getStudentsEnrolledActivity,approveStudentActivity } from "../../actions/facultyActivityAction";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class RejectedStudent extends Component {
-  render() {
+  constructor() {
+    super();
+    this.state = {
+      branchId: "",
+      semesterId: "",
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onChange = (e) => {
+    //console.log(e.target);
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onSubmit = (e) => {
+    e.preventDefault();
     const { id } = this.props.match.params;
-    return (
-      <React.Fragment>
-        <FacultySideNav aid={id} />
-        <div id="main" className="openmain">
-          <FacultyTopNav />
-          <div className="maindivs">
-            <div className="row">
-              <div className="col-md-2">
-                <select id="sortdrp">
-                  <option value="">Sort By Branch</option>
+    const pendingData = {
+      facultyId: 1,
+      activityDetailId: id,
+      status: null,
+      branchId: this.state.branchId,
+      semesterId: this.state.semesterId,
+    };
+    //console.log(pendingData);
+    this.props.getStudentsEnrolledActivity(pendingData);
+  };
 
-                  <option value="">Computer Engineering</option>
-                  <option value="">Mechanical Engineering</option>
-                </select>
-              </div>
+  componentDidMount() {
+    this.props.getBranches();
+    this.props.getSemesters();
+    const { id } = this.props.match.params;
+    const pendingData = {
+      facultyId: 1,
+      activityDetailId: id,
+      status: false,
+      branchId: this.state.branchId,
+      semesterId: this.state.semesterId,
+    };
+    //console.log(pendingData);
+    this.props.getStudentsEnrolledActivity(pendingData);
+  }
 
-              <div className="col-md-7">
-                <select id="sortdrp">
-                  <option value="">Sort By Degree</option>
+  componentWillReceiveProps(){
+    const { id } = this.props.match.params;
+    const rejectedData = {
+      facultyId: 1,
+      activityDetailId: id,
+      status: false,
+      branchId: this.state.branchId,
+      semesterId: this.state.semesterId,
+    };
+    //console.log(pendingData);
+    this.props.getStudentsEnrolledActivity(rejectedData);
+  }
 
-                  <option value="">BTECH</option>
-                  <option value="">BTECH</option>
-                </select>
-              </div>
 
-              <input type="text" placeholder="Search" id="searchBtn" required />
-              <button className="btn btn-light" id="search">
-                Search
-              </button>
-            </div>
+  onApprove(id){
+    //console.log(id);
+    const approveStudent = {
+      activityId:id,
+      status:true,
+      comment:"",
+    }
+    this.props.approveStudentActivity(approveStudent,this.props.history);
+  }
+
+  onPending(id){
+
+    const pendingStudent = {
+      activityId:id,
+      status:null,
+      comment:"",
+    }
+    this.props.approveStudentActivity(pendingStudent,this.props.history);
+  }
+
+
+  render() {
+    const { id, forAll } = this.props.match.params;
+
+    const { branches } = this.props.branch;
+    const { semesters } = this.props.semester;
+
+    const branchList = branches.map((branch) => (
+      <option value={branch.id}>{branch.branchName}</option>
+    ));
+
+    const semesterList = semesters.map((semester) => (
+      <option value={semester.id}>{semester.semester}</option>
+    ));
+
+    const forAllTrue = (
+      <div className="maindivs">
+        <div className="row">
+          <div className="col-md-2">
+            <select
+              id="sortdrp"
+              name="branchId"
+              value={this.state.branchId}
+              onChange={this.onChange}
+            >
+              <option value="">Sort By Branch</option>
+              {branchList}
+            </select>
           </div>
 
+          <select
+            id="sortdrp"
+            name="semesterId"
+            value={this.state.semesterId}
+            onChange={this.onChange}
+          >
+            <option value="">Sort By Semester</option>
+            {semesterList}
+          </select>
+        </div>
+
+        <button className="btn btn-light" id="search" onClick={this.onSubmit}>
+          Search
+        </button>
+      </div>
+    );
+
+    const forAllFalse = (
+      <div className="maindivs">
+        <div className="row">
+          <div className="col-md-2">
+            <select
+              id="sortdrp"
+              name="semesterId"
+              value={this.state.semesterId}
+              onChange={this.onChange}
+            >
+              <option value="">Sort By Semester</option>
+              {semesterList}
+            </select>
+          </div>
+        </div>
+
+        <button className="btn btn-light" id="search" onClick={this.onSubmit}>
+          Search
+        </button>
+      </div>
+    );
+    let ToUse;
+    ToUse = parseInt(forAll) ? forAllTrue : forAllFalse;
+
+    const { pendingEnrollStudent } = this.props.facultyOperation;
+ 
+    const { Students, docRequired, title } = pendingEnrollStudent;
+  
+    const PendingStundents =
+      Students &&
+      Students.map((student) => (
+        <tr>
+          <td>{student.erpId}</td>
+          <td>{student.name}</td>
+          <td>{student.studentType}</td>
+          <td>A</td>
+          <td>68</td>
+          <td>
+            {docRequired ? (
+              <button className="btn btn-primary mr-1">Display</button>
+            ) : null}
+            <button className="btn btn-success mr-1" onClick={this.onApprove.bind(this,student.Activity.id)} >Approve</button>
+            <button className="btn btn-danger mr-1"  onClick={this.onPending.bind(this,student.Activity.id)}>Add to Pending</button>
+          </td>
+        </tr>
+      ));
+
+    return (
+      <React.Fragment>
+        <FacultySideNav aid={id} forAll={forAll} />
+        <div id="main" className="openmain">
+          <FacultyTopNav />
+
+          {ToUse}
           <div className="maindivs">
-            <b>Rejected Student:</b> Paper Presentation
+            <b>Rejected Student:</b> {title}
             <br />
             <br />
             <div className="table-responsive">
@@ -47,26 +198,13 @@ class RejectedStudent extends Component {
                   <tr>
                     <th>No.</th>
                     <th>Student Name</th>
-                    <th>Year</th>
+                    <th>Admission Type</th>
                     <th>Division</th>
                     <th>Roll No. </th>
                     <th></th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Neha Desai</td>
-                    <td>TE</td>
-                    <td>A</td>
-                    <td>68</td>
-                    <td>
-                      <button className="btn btn-primary">Display</button>
-                      <button className="btn btn-success">Approve</button>
-                      <button className="btn btn-info">Add to Pending</button>
-                    </td>
-                  </tr>
-                </tbody>
+                <tbody>{PendingStundents}</tbody>
               </table>
             </div>
           </div>
@@ -76,4 +214,25 @@ class RejectedStudent extends Component {
   }
 }
 
-export default RejectedStudent;
+RejectedStudent.propTypes = {
+  getBranches: PropTypes.func.isRequired,
+  branch: PropTypes.object.isRequired,
+  getSemesters: PropTypes.func.isRequired,
+  semester: PropTypes.object.isRequired,
+  getStudentsEnrolledActivity: PropTypes.func.isRequired,
+  facultyOperation: PropTypes.object.isRequired,
+  approveStudentActivity:PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  branch: state.branch,
+  semester: state.semester,
+  facultyOperation: state.facultyOperation,
+});
+
+export default connect(mapStateToProps, {
+  getBranches,
+  getSemesters,
+  getStudentsEnrolledActivity,
+  approveStudentActivity
+})(RejectedStudent);

@@ -8,6 +8,7 @@ import categoryReducer from "./categoryReducer";
 import activityReducer from "./activityReducer";
 import semesterReducer from "./semesterReducer";
 import facultyOperationReducer from "./facultyOperationReducer";
+import securityReducer from "./securityReducer";
 
 /* Combining all reducers */
 export default combineReducers({
@@ -20,4 +21,5 @@ export default combineReducers({
   category: categoryReducer,
   activity: activityReducer,
   error: errorReducer,
+  security: securityReducer,
 });

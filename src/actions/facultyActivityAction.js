@@ -36,3 +36,19 @@ export const getStudentsEnrolledActivity = (pendingData) => async (
     });
   }
 };
+
+export const approveStudentActivity = (approveStudent,history) => async dispatch => {
+  try {
+    
+    await axios.post("/faculty/activity",approveStudent);
+    dispatch({
+      type:GET_ERROR,
+      payload:{}
+    })
+  } catch (err) {
+    dispatch({
+      type:GET_ERROR,
+      payload:err.response.data,
+    })
+  }
+}
