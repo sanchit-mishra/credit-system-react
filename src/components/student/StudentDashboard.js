@@ -3,13 +3,20 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StudentTable from "./StudentTable";
 import PropTypes from "prop-types";
-import { getStudents } from "../../actions/studentAction";
+import { getStudents,getVerifiedStudents } from "../../actions/studentAction";
 import { connect } from "react-redux";
 import Header from "../layout/header";
 
 class StudentDashboard extends Component {
   componentDidMount() {
-    this.props.getStudents();
+    const verifiedStudent = {
+      "verified":true,
+      "semesterId":null,
+      "branchId":null,
+      "degreeId":null,
+    }
+    this.props.getVerifiedStudents(verifiedStudent);
+    //this.props.getStudents();
   }
   render() {
     const { students } = this.props.student;
@@ -26,6 +33,13 @@ class StudentDashboard extends Component {
             </button>
           </Link>
 
+          <Link to="/verifyStudent">
+            <button class="btn btn-default" id="addStudent" style={{ width: "auto"}}>
+              Verify Registered Student <FontAwesomeIcon icon="check" />
+            </button>
+          </Link>
+
+
           <hr size="2" />
 
           <StudentTable students={students} />
@@ -37,10 +51,12 @@ class StudentDashboard extends Component {
 
 StudentDashboard.propTypes = {
   getStudents: PropTypes.func.isRequired,
+  getVerifiedStudents:PropTypes.func.isRequired,
+  student:PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   student: state.student,
 });
 
-export default connect(mapStateToProps, { getStudents })(StudentDashboard);
+export default connect(mapStateToProps, { getStudents, getVerifiedStudents })(StudentDashboard);

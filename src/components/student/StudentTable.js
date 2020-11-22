@@ -29,7 +29,7 @@ class StudentTable extends Component {
           </thead>
           {students.map((student) => (
             <tr>
-              <td>{student.name}</td>
+              <td>{student.firstName} {student.lastName}</td>
               <td>{student.Branch.branchName}</td>
               <td>{student.email}</td>
               <td>{student.mobileNo}</td>

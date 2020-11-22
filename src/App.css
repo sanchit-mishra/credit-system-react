@@ -239,6 +239,23 @@ select {
   font-size: 24px;
 }
 
+.overlay-contentView {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(0, 0);
+  -ms-transform: translate(-50%, -50%) scale(0, 0);
+  background-color: white;
+  width: 30%;
+  height: 60%;
+  top: 50%;
+  left: 50%;
+  padding: 20px 10px 10px 10px;
+  border-radius: 5px;
+  animation: zoomin 0.3s linear both;
+}
+
+.overlay-contentView .row {
+  margin-top: 15px;
+}
 @keyframes zoomin {
   0% {
     transform: translate(-50%, -50%) scale(0, 0);
@@ -409,7 +426,7 @@ select {
   display: inline-block;
   border: 1px solid #ccc;
   box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-top: 30px;
   border-radius: 0px;
 }
 
@@ -472,8 +489,9 @@ progress::-webkit-progress-bar {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-between;
 }
-.actCard {
+#actCard {
   margin: 20px 10px 0px 10px;
   width: 300px;
   border: 1px solid rgb(204, 203, 203);
@@ -481,10 +499,10 @@ progress::-webkit-progress-bar {
   cursor: pointer;
 }
 
-.actCard:hover {
+#actCard:hover {
   box-shadow: 3px 3px 3px #e9e9e9;
 }
-.actCard p {
+#actCard p {
   color: grey;
   font-size: 14px;
 }
@@ -496,6 +514,12 @@ select {
 #sortdrp {
   font-size: 14px;
 }
+
+#viewmore {
+  color: blue;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 992px) {
   .header a:not(:first-child) {
     display: none;

@@ -4,9 +4,9 @@ import { setJwtToken } from "../components/securityUtil/setJwtToken";
 
 import { GET_ERROR,SET_USER} from "./types";
 
-export const registerUser = (registerRequest, history) => async dispatch => {
+export const registerUser = (studentRegister, history) => async dispatch => {
     try {
-        await axios.post("/student/selfRegistration", registerRequest);
+        await axios.post("/student/selfRegistration", studentRegister);
         dispatch({
             type:GET_ERROR,
             payload:{},
@@ -20,7 +20,21 @@ export const registerUser = (registerRequest, history) => async dispatch => {
     }
 }
 
-
+export const registerFaculty = (facultyRegister, history) => async dispatch => {
+    try {
+        await axios.post("/faculty/selfRegistration", facultyRegister);
+        dispatch({
+            type:GET_ERROR,
+            payload:{},
+        })
+        history.push("/");
+    } catch (err) {
+        dispatch({
+            type:GET_ERROR,
+            payload:err.response.data,
+        })
+    }
+}
 
 export const loginUser = (loginRequest, history) => async dispatch => {
     try {

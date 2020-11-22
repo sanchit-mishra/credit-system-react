@@ -4,6 +4,8 @@ import {
   GET_STUDENTS,
   GET_ENROLL_STATUS,
   DELETE_ENROLL,
+  GET_UNVERIFIED_STUDENT,
+  GET_VERIFIED_STUDENT,
 } from "../actions/types";
 
 const initialState = {
@@ -24,6 +26,16 @@ export default function (state = initialState, action) {
         ...state,
         students: action.payload,
       };
+    case GET_UNVERIFIED_STUDENT:
+      return{
+        ...state,
+        students: action.payload,
+      }
+    case GET_VERIFIED_STUDENT:
+      return{
+        ...state,
+        students: action.payload,
+      }
     case DELETE_STUDENT:
       return {
         ...state,

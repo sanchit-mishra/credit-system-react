@@ -24,7 +24,7 @@ import AddActivity from "./components/activity/AddActivity";
 import AssignActivity from "./components/activity/AssignActivity";
 import ActivityView from "./components/activity/ActivityView";
 import EnrollActivity from "./components/student/EnrollActivity";
-//import Landing from "./components/layout/Landing";
+import Landing from "./components/layout/Landing";
 import StudentActivityStatus from "./components/student/StudentActivityStatus";
 import StudentLoginDash from "./components/student/StudentLoginDash";
 import FacultyLoginDash from "./components/faculty/FacultyLoginDash";
@@ -35,6 +35,8 @@ import jwt_decode from "jwt-decode";
 import {SET_USER} from "./actions/types";
 import { setJwtToken } from "./components/securityUtil/setJwtToken";
 import StudentRegistration from "./components/authentication/StudentRegistration";
+import VerifyStudent from "./components/student/VerifyStudent";
+import FacultyRegistration from "./components/authentication/FacultyRegistration";
 
 const jwt = localStorage.jwtToken;
 
@@ -54,6 +56,7 @@ function App() {
         <div className="App">
           <Route exact path="/" component={Login} />
           <Route exact path="/registerStudent" component={StudentRegistration} />
+          <Route exact path="/registerFaculty" component={FacultyRegistration} />
           <Route exact path="/admin" component={Dashboard} />
           {/* Faculty Use Route */}
           <Route exact path="/facultyDashboard" component={FacultyDashboard} />
@@ -65,6 +68,7 @@ function App() {
           <Route exact path="/branchDashboard" component={BranchDashboard} />
           {/* Student Use Route */}
           <Route exact path="/studentDashboard" component={StudentDashboard} />
+          <Route exact path="/verifyStudent" component={VerifyStudent} />
           <Route exact path="/addStudent" component={AddStudent} />
           <Route exact path="/updateStudent/:id" component={UpdateStudent} />
           {/* Activity Use Route */}

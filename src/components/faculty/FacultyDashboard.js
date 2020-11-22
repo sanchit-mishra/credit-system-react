@@ -53,7 +53,6 @@ class FacultyDashboard extends Component {
                   <option value="">Computer Engineering</option>
                 </select>
               </div>
-              <input type="text" placeholder="Search" id="searchBtn" required />
             </div>
           </div>
           <br />

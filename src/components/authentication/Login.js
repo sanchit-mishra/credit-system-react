@@ -48,7 +48,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="loginMainDiv">
+      <div className="loginMainDiv bgImage">
         <div className="centerMainDiv">
           <div className="loginTitle">
             <b>TCET ACTIVITY PORTAL</b>

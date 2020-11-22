@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_STUDENT, GET_ERROR, GET_STUDENT, GET_STUDENTS } from "./types";
+import { DELETE_STUDENT, GET_ERROR, GET_STUDENT, GET_STUDENTS, GET_UNVERIFIED_STUDENT, GET_VERIFIED_STUDENT } from "./types";
 
 export const addStudent = (newStudent, history) => async (dispatch) => {
   try {
@@ -80,3 +80,49 @@ export const deleteStudent = (id) => async (dispatch) => {
     }
   } catch (err) {}
 };
+
+export const getUnverifiedStudents = (unverifiedStatus) => async dispatch => {
+  try {
+    const res = await axios.post("/student/verify", unverifiedStatus);
+    dispatch({
+      type:GET_UNVERIFIED_STUDENT,
+      payload:res.data,
+    })
+  } catch (err) {
+    dispatch({
+      type:GET_ERROR,
+      payload:err.response.data,
+    })
+  }
+}
+
+export const getVerifiedStudents = (verifiedStatus) => async dispatch => {
+  try {
+    const res = await axios.post("/student/verify", verifiedStatus);
+    dispatch({
+      type:GET_VERIFIED_STUDENT,
+      payload:res.data,
+    })
+  } catch (err) {
+    dispatch({
+      type:GET_ERROR,
+      payload:err.response.data,
+    })
+  }
+}
+
+export const verifyStudent = (id, history) => async dispatch => {
+  try {
+    await axios.put(`student/verify/${id}`);
+    dispatch({
+      type:GET_ERROR,
+      payload:{},
+    });
+    history.push("/studentDashboard");
+  } catch (err) {
+    dispatch({
+      type:GET_ERROR,
+      payload:err.response.data,
+    });
+  }
+}
