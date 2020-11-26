@@ -11,7 +11,7 @@ import {
 
 class StudentActivityStatus extends Component {
   componentDidMount() {
-    this.props.getEnrollActivitiesStatus(2);
+    this.props.getEnrollActivitiesStatus(6);
   }
 
   onDeleteClick(id) {

@@ -32,7 +32,7 @@ class AssignActivity extends Component {
       facultyIds: this.state.facultyIds,
       forAll: this.state.forAll,
     };
-    // console.log(actMap);
+     console.log(actMap);
     this.props.assignActFact(actMap, this.props.history);
   };
 
@@ -67,7 +67,7 @@ class AssignActivity extends Component {
       facultyList = faculties.map((faculty) => {
         return {
           value: faculty.id,
-          label: faculty.name,
+          label: faculty.firstName,
         };
       });
     }
@@ -76,7 +76,7 @@ class AssignActivity extends Component {
       <React.Fragment>
         <Header />
         <div class="container">
-          <h4>Assign Faculty to Activity</h4>
+          <h4>Assign Faculty to Internship</h4>
 
           <hr size="2" />
           {/*<!--CATEGORY NAME-->*/}

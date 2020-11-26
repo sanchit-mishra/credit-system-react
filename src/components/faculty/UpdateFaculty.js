@@ -28,11 +28,11 @@ class UpdateFaculty extends Component {
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
-    const { id, name, email, password, branchId } = nextProps.faculty;
+    const { id, firstName, email, password, branchId } = nextProps.faculty;
 
     this.setState({
       id,
-      name,
+      firstName,
       email,
       password,
       branchId,
@@ -80,7 +80,7 @@ class UpdateFaculty extends Component {
                 class="form-control"
                 name="name"
                 id=""
-                value={this.state.name}
+                value={this.state.firstName}
                 onChange={this.onChange}
                 placeholder="Enter Faculty Name"
               />

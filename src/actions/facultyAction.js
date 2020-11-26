@@ -1,5 +1,5 @@
 import axios from "axios";
-import { DELETE_FACULTY, GET_ERROR, GET_FACULTIES, GET_FACULTY } from "./types";
+import { DELETE_FACULTY, GET_ERROR, GET_FACULTIES, GET_FACULTY, GET_UNVERIFIED_FACULTY, GET_VERIFIED_FACULTY } from "./types";
 
 /* Add Faculty */
 export const addFaculty = (faculty, history) => async (dispatch) => {
@@ -39,7 +39,7 @@ export const getFaculty = (id, history) => async (dispatch) => {
 /* Get All Faculties */
 export const getFaculties = () => async (dispatch) => {
   try {
-    const res = await axios.get("/faculty");
+    const res = await axios.get("/faculty/withDetails");
     dispatch({
       type: GET_FACULTIES,
       payload: res.data,
@@ -87,3 +87,49 @@ export const deleteFaculty = (id) => async (dispatch) => {
     }
   } catch (err) {}
 };
+
+export const getVerifiedFaculties = (verifiedStatus) => async dispatch =>{
+  try {
+    const res = await axios.get("/faculty/verify",verifiedStatus);
+    dispatch({
+      type:GET_VERIFIED_FACULTY,
+      payload:res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type:GET_ERROR,
+      payload:err.response.data,
+    })
+  }
+}
+
+export const getUnverifiedFaculties = (unverifiedStatus) => async dispatch => {
+  try {
+    const res = await axios.post("/faculty/verify", unverifiedStatus);
+    dispatch({
+      type: GET_UNVERIFIED_FACULTY,
+      payload: res.data,
+    })
+  } catch (err) {
+    dispatch({
+      type: GET_ERROR,
+      payload: err.response.data,
+    })
+  }
+}
+
+export const verifyFaculty = (id, history) => async dispatch => {
+  try {
+    await axios.put(`faculty/verify/${id}`);
+    dispatch({
+      type:GET_ERROR,
+      payload:{},
+    });
+    history.push("/facultyDashboard");
+  } catch (err) {
+    dispatch({
+      type:GET_ERROR,
+      payload:err.response.data,
+    });
+  }
+}

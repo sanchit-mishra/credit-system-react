@@ -3,6 +3,8 @@ import {
   GET_FACULTIES,
   DELETE_FACULTY,
   GET_ALLOTED_ACTIVITY,
+  GET_VERIFIED_FACULTY,
+  GET_UNVERIFIED_FACULTY,
 } from "../actions/types";
 
 const initialState = {
@@ -34,6 +36,16 @@ export default function (state = initialState, action) {
       return {
         ...state,
         facultyActivityAlloted: action.payload,
+      };
+    case GET_VERIFIED_FACULTY:
+      return{
+        ...state,
+        faculties: action.payload,
+      };
+    case GET_UNVERIFIED_FACULTY:
+      return{
+        ...state,
+        faculties: action.payload,
       };
     default:
       return state;

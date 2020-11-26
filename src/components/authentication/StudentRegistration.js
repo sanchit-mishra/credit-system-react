@@ -80,7 +80,7 @@ class StudentRegistration extends Component{
         return(
         <div className="registerMainDiv">
         <div className="rcenterMainDiv">
-            <div className="registerTitle"><b>TCET ACTIVITY PORTAL</b></div>
+            <div className="registerTitle"><b>INTERNSHIP PORTAL</b></div>
 
             <div id="registerformMain">
             <p>Enter Details:</p>

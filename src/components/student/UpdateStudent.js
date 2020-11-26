@@ -34,7 +34,7 @@ class UpdateStudent extends Component {
   UNSAFE_componentWillReceiveProps(nextProps) {
     const {
       id,
-      name,
+      firstName,
       email,
       password,
       mobileNo,
@@ -44,7 +44,7 @@ class UpdateStudent extends Component {
     } = nextProps.student;
     this.setState({
       id,
-      name,
+      firstName,
       email,
       password,
       mobileNo,
@@ -127,7 +127,7 @@ class UpdateStudent extends Component {
                     class="form-control"
                     name="name"
                     id="StudentName"
-                    value={this.state.name}
+                    value={this.state.firstName}
                     onChange={this.onChange}
                     required
                   />

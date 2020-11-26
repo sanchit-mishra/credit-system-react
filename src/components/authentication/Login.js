@@ -51,7 +51,7 @@ class Login extends Component {
       <div className="loginMainDiv bgImage">
         <div className="centerMainDiv">
           <div className="loginTitle">
-            <b>TCET ACTIVITY PORTAL</b>
+            <b>INTERNSHIP PORTAL</b>
           </div>
           <div id="loginformMain" >
             <input

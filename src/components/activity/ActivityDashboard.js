@@ -52,7 +52,7 @@ class ActivityDashboard extends Component {
       <React.Fragment>
         <Header />
         <div className="container">
-          <h4>Activity</h4>
+          <h4>Internship</h4>
           <br />
           {/* <!--BUTTON TO ADD --> */}
           <div className="row">
@@ -74,7 +74,7 @@ class ActivityDashboard extends Component {
             <div class="col-md-2">
               <Link to="/addActivity">
                 <button class="btn btn-default" id="addactivity">
-                  Add Activty <FontAwesomeIcon icon="calendar-plus" />
+                  Add Internship <FontAwesomeIcon icon="calendar-plus" />
                 </button>
               </Link>
             </div>

@@ -37,6 +37,7 @@ import { setJwtToken } from "./components/securityUtil/setJwtToken";
 import StudentRegistration from "./components/authentication/StudentRegistration";
 import VerifyStudent from "./components/student/VerifyStudent";
 import FacultyRegistration from "./components/authentication/FacultyRegistration";
+import VerifyFaculty from "./components/faculty/VerifyFaculty";
 
 const jwt = localStorage.jwtToken;
 
@@ -54,12 +55,14 @@ function App() {
     <Provider store={store}>
       <Router>
         <div className="App">
-          <Route exact path="/" component={Login} />
+     { /*   <Route exact path="/" component={Landing} /> */  }
+     {  <Route exact path="/" component={Login} />   }
           <Route exact path="/registerStudent" component={StudentRegistration} />
           <Route exact path="/registerFaculty" component={FacultyRegistration} />
           <Route exact path="/admin" component={Dashboard} />
           {/* Faculty Use Route */}
           <Route exact path="/facultyDashboard" component={FacultyDashboard} />
+          <Route exact path="/verifyFaculty" component={VerifyFaculty} />
           <Route exact path="/addFaculty" component={AddFaculty} />
           <Route exact path="/updateFaculty/:id" component={UpdateFaculty} />
           {/* Degree Use Route */}

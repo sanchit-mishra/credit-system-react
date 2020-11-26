@@ -79,7 +79,7 @@ class EnrollActivity extends Component {
         <div id="main" className="openmain">
           <TopNav />
           <div className="maindivs" id="pageHeading">
-            <h5>Enroll for Activity</h5>
+            <h5>Enroll for Internship</h5>
           </div>
           <div className="maindivs">
             <form encType="multipart/form-data" onSubmit={this.onSubmit}>

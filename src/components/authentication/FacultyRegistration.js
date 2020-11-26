@@ -45,6 +45,7 @@ class FacultyRegistration extends Component{
             branchId: this.state.branchId,
             DOB: this.state.DOB,
         }
+        console.log(facultyRegisterInfo);
         this.props.registerFaculty(facultyRegisterInfo, this.props.history);
     }
 
@@ -64,29 +65,29 @@ class FacultyRegistration extends Component{
             <p>Enter Details:</p>
         
             <div className="row">      
-              <div className="col-md-4"><input type="text" placeholder="First Name" id="fname" /></div>
-              <div className="col-md-4"><input type="text" placeholder="Middle Name" /></div>
-              <div className="col-md-4"><input type="text" placeholder="Last Name" /></div>
+              <div className="col-md-4"><input type="text" placeholder="First Name" id="fname" name="firstName" value={this.state.firstName} onChange={this.onChange} /></div>
+              <div className="col-md-4"><input type="text" placeholder="Middle Name" name="middleName" value={this.state.middleName} onChange={this.onChange} /></div>
+              <div className="col-md-4"><input type="text" placeholder="Last Name" name="lastName" value={this.state.lastName} onChange={this.onChange} /></div>
             </div>
               
             <div className="row">
               <div className="col-md-6">
-                <input type="text" placeholder="ERP ID" />
+                <input type="text" placeholder="ERP ID" name="erpId" value={this.state.erpId} onChange={this.onChange} />
               </div>
             </div>
 
             <div className="row">
               <div className="col-md-6">
-                <input type="text" placeholder="Email ID" />
+                <input type="text" placeholder="Email ID" name="email" value={this.state.email} onChange={this.onChange} />
               </div>
               <div className="col-md-6">
-                <input type="text" placeholder="Mobile Number" />
+                <input type="text" placeholder="Mobile Number" name="mobileNo" value={this.state.mobileNo} onChange={this.onChange} />
               </div>
             </div>
 
             <div className="row">
               <div className="col-md-6">
-                <input type="password" placeholder="Enter Password" />
+                <input type="password" placeholder="Enter Password" name="password" value={this.state.password} onChange={this.onChange} />
               </div>
               <div className="col-md-6">
                 <input type="password" placeholder="Re-Enter Password" />
@@ -95,7 +96,7 @@ class FacultyRegistration extends Component{
 
             <div className="row">
               <div className="col-md-6">
-              <select id="selectDrp">
+              <select id="selectDrp" name="branchId" value={this.state.branchId} onChange={this.onChange}>
                 <option value="">Branch</option>
                 {branchList}
               </select>
@@ -106,12 +107,12 @@ class FacultyRegistration extends Component{
             <div className="row">
               <div className="col-md-6">
                     Date Of Birth:
-                    <input type="date" style={{marginTop: "0px"}} />
+                    <input type="date" style={{marginTop: "0px"}} name="DOB" value={this.state.DOB} onChange={this.onChange}  />
                 </div>
             </div>
 
         <br />
-              <button class="btn btn-primary">Register</button>
+              <button className="btn btn-primary" onClick={this.onSubmit}>Register</button>
             </div>
         </div>
     </div>

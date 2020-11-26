@@ -24,7 +24,7 @@ class ActivityView extends Component {
     const facultyNames =
       facultyArray &&
       facultyArray.map((faculty) => (
-        <div className="facultyName">{faculty.name}</div>
+        <div className="facultyName">{faculty.firstName}</div>
       ));
 
     const docRequired = activityCategory.docRequired ? "Yes" : "No";
@@ -33,7 +33,7 @@ class ActivityView extends Component {
       <React.Fragment>
         <Header />
         <div className="container">
-          <h4>Activity</h4>
+          <h4>Internship</h4>
           <hr size="2" />
 
           <h5>{activityCategory.title}</h5>

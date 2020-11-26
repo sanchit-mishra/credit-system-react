@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StudentTable from "./StudentTable";
 import PropTypes from "prop-types";
-import { getStudents,getVerifiedStudents } from "../../actions/studentAction";
+import { getVerifiedStudents } from "../../actions/studentAction";
 import { connect } from "react-redux";
 import Header from "../layout/header";
 
@@ -16,7 +16,7 @@ class StudentDashboard extends Component {
       "degreeId":null,
     }
     this.props.getVerifiedStudents(verifiedStudent);
-    //this.props.getStudents();
+    
   }
   render() {
     const { students } = this.props.student;
@@ -50,7 +50,6 @@ class StudentDashboard extends Component {
 }
 
 StudentDashboard.propTypes = {
-  getStudents: PropTypes.func.isRequired,
   getVerifiedStudents:PropTypes.func.isRequired,
   student:PropTypes.object.isRequired,
 };
@@ -59,4 +58,4 @@ const mapStateToProps = (state) => ({
   student: state.student,
 });
 
-export default connect(mapStateToProps, { getStudents, getVerifiedStudents })(StudentDashboard);
+export default connect(mapStateToProps, { getVerifiedStudents })(StudentDashboard);

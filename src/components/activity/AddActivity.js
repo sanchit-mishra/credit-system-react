@@ -63,7 +63,7 @@ class AddActivity extends Component {
       <React.Fragment>
         <Header />
         <div class="container">
-          <h4>Enter Activity Details</h4>
+          <h4>Enter Internship Details</h4>
 
           <hr size="2" />
 
@@ -71,7 +71,7 @@ class AddActivity extends Component {
             {/* <!--first row--> */}
             <div class="row">
               <div class="col-md-8">
-                <label for="activtyname">Activity Name:</label>
+                <label for="activtyname">Internship Name:</label>
                 <div class="form-group">
                   <input
                     type="text"

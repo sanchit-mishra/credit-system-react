@@ -25,10 +25,10 @@ class StudentLoginDash extends Component {
           <div class="row">
             <div class="col-md-6">
               <div class="maindivs">
-                <h5>Your Progress:</h5>
+                <h5>Your Internship Progress:</h5>
                 <p>
                   You have to complete the targeted points so that you can
-                  appear for your final year exams.
+                  complete your internship.
                 </p>
 
                 <progress
@@ -67,8 +67,8 @@ class StudentLoginDash extends Component {
             <div class="col-md-2">
               <div class="maindivs">
                 <div class="ptsdetails" id="noofact">
-                  <h1>10</h1>
-                  Activities participated
+                  <h1>1</h1>
+                  Internship Enrolled
                 </div>
               </div>
             </div>

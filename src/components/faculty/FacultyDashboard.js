@@ -4,12 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import FacultyTable from "./FacultyTable";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getFaculties } from "../../actions/facultyAction";
+import { getVerifiedFaculties } from "../../actions/facultyAction";
 import Header from "../layout/header";
 
 class FacultyDashboard extends Component {
   componentDidMount() {
-    this.props.getFaculties();
+    const verifiedFaculty = {
+      "verified": true,
+      "branchId": null,
+    }
+    this.props.getVerifiedFaculties(verifiedFaculty);
   }
 
   render() {
@@ -41,20 +45,26 @@ class FacultyDashboard extends Component {
             </button>
           </Link>
 
+          <Link to="/verifyFaculty">
+            <button class="btn btn-default" id="addStudent" style={{ width: "auto"}}>
+              Verify Registered Faculty <FontAwesomeIcon icon="check" />
+            </button>
+          </Link>
+
           <hr size="2" />
 
-          <div className="tableControl">
+          {/* <div className="tableControl">
             <div className="row">
               <div className="col-md-9">
                 <select>
                   <option value="">Sort By Branch</option>
-                  {/* <!--this list will come from backend from branch table. Given data is for demo--> */}
+                  
                   <option value="">Mechanical Engineering</option>
                   <option value="">Computer Engineering</option>
                 </select>
               </div>
             </div>
-          </div>
+         </div> */}
           <br />
 
           <FacultyTable faculties={faculties} />
@@ -65,12 +75,12 @@ class FacultyDashboard extends Component {
 }
 
 FacultyDashboard.propTypes = {
+  getVerifiedFaculties: PropTypes.func.isRequired,
   faculty: PropTypes.object.isRequired,
-  getFaculties: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   faculty: state.faculty,
 });
 
-export default connect(mapStateToProps, { getFaculties })(FacultyDashboard);
+export default connect(mapStateToProps, { getVerifiedFaculties })(FacultyDashboard);
