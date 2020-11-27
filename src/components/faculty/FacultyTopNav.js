@@ -12,6 +12,11 @@ class FacultyTopNav extends Component {
     this.closeNav = this.closeNav.bind(this);
   }
 
+  componentDidMount(){
+    const {id} = this.props.security.user;
+    this.props.getFaculty(id);
+  }
+
   closeNav() {
     var sidebar = document.getElementById("sideNavbar");
     var mainDiv = document.getElementById("main");
@@ -32,14 +37,14 @@ class FacultyTopNav extends Component {
   
   render() {
  
-    const firstname = this.props.firstname;
-    const lastname = this.props.lastname;
-    console.log(firstname);
+    // const firstname = this.propsfirstname;
+    // const lastname = this.props.lastname;
+    const {firstName, lastName} = this.props.faculty.faculty;
     return (
       <div className="topNav">
         <FontAwesomeIcon id="humMenu" icon="bars" onClick={this.closeNav} />
         <div className="profile">
-          <FontAwesomeIcon icon="user-circle" className="profileID" />&nbsp; {firstname} {lastname} ! &nbsp;
+          <FontAwesomeIcon icon="user-circle" className="profileID" />&nbsp; {firstName} {lastName}! &nbsp;
           <Link to="/" data-toggle="tooltip" title="Logout" onClick={this.logout.bind(this)}>
             <FontAwesomeIcon
               icon="power-off"
@@ -56,7 +61,12 @@ class FacultyTopNav extends Component {
 
 FacultyTopNav.propTypes = {
   logout:PropTypes.func.isRequired,
+  getFaculty: PropTypes.func.isRequired,
+  faculty: PropTypes.object.isRequired,
 }
 
+const mapStateToProps = (state) => ({
+  faculty: state.faculty,
+})
 
-export default connect(null,{logout})(FacultyTopNav);
+export default connect(mapStateToProps,{logout, getFaculty})(FacultyTopNav);

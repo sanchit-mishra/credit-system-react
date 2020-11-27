@@ -9,18 +9,16 @@ import {getStudent} from "../../actions/studentAction";
 class StudentLoginDash extends Component {
 
   componentDidMount(){
-    const id = this.props.security.user.id;
-    this.props.getStudent(id);
   }
 
 
   render() {
-    const {firstName, lastName} = this.props.student.student;
+   // const {firstName, lastName} = this.props.student.student;
     return (
       <React.Fragment>
         <SideNav />
         <div id="main" className="openmain">
-          <TopNav firstname={firstName} lastname={lastName} />
+          <TopNav  />
 
           <div class="row">
             <div class="col-md-6">

@@ -4,12 +4,19 @@ import { Link } from "react-router-dom";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {logout} from "../../actions/userAction";
+import {getStudent} from "../../actions/studentAction";
 
 class TopNav extends Component {
   constructor() {
     super();
     this.closeNav = this.closeNav.bind(this);
   }
+
+  componentDidMount(){
+    const {id} = this.props.security.user;
+    this.props.getStudent(id);
+  }
+
 
   logout(){
     this.props.logout();
@@ -29,14 +36,15 @@ class TopNav extends Component {
     }
   }
   render() {
-    const firstname = this.props.firstname;
-    const lastname = this.props.lastname;
+    //const firstname = this.props.firstname;
+    //const lastname = this.props.lastname;
+    const {firstName, lastName} = this.props.student.student;
     return (
       <div className="topNav">
         <FontAwesomeIcon id="humMenu" icon="bars" onClick={this.closeNav} />
         <div className="profile">
-          <FontAwesomeIcon icon="user-circle" className="profileID" /> {firstname}
-          {lastname}!
+          <FontAwesomeIcon icon="user-circle" className="profileID" /> {firstName}
+          {lastName}!
           <Link to="/" data-toggle="tooltip" title="Logout" onClick={this.logout.bind(this)}>
             <FontAwesomeIcon
               icon="power-off"
@@ -53,6 +61,12 @@ class TopNav extends Component {
 
 TopNav.propTypes = {
   logout:PropTypes.func.isRequired,
+  getStudent: PropTypes.func.isRequired,
 }
 
-export default connect(null,{logout})(TopNav);
+const mapStateToProps = (state) => ({
+  student: state.student,
+  security: state.security,
+})
+
+export default connect(mapStateToProps,{logout, getStudent})(TopNav);
