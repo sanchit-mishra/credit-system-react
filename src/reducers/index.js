@@ -9,6 +9,7 @@ import activityReducer from "./activityReducer";
 import semesterReducer from "./semesterReducer";
 import facultyOperationReducer from "./facultyOperationReducer";
 import securityReducer from "./securityReducer";
+import natureOfActivityReducer from "./natureOfActivityReducer";
 
 /* Combining all reducers */
 export default combineReducers({
@@ -22,4 +23,5 @@ export default combineReducers({
   activity: activityReducer,
   error: errorReducer,
   security: securityReducer,
+  nature: natureOfActivityReducer,
 });

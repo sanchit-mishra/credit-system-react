@@ -3,6 +3,7 @@ import {
   DELETE_ACTIVITY,
   GET_ACTIVITIES,
   GET_ACTIVITIES_CATEGORIES,
+  GET_ACTIVITY,
   GET_ACTIVITY_CATEGORY,
   GET_ERROR,
 } from "./types";
@@ -37,6 +38,22 @@ export const getActivities = () => async (dispatch) => {
     });
   }
 };
+
+export const getActivity = (id) => async dispatch => {
+  try {
+    const res = await axios.get(`/activityDetails/${id}`);
+    dispatch({
+      type: GET_ACTIVITY,
+      payload: res.data,
+    })
+  } catch (err) {
+    dispatch({
+      type: GET_ERROR,
+      payload: err.response.data,
+    })
+  }
+}
+
 
 export const assignActFact = (assActFact, history) => async (dispatch) => {
   try {

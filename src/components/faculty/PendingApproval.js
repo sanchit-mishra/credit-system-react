@@ -39,11 +39,11 @@ class PendingApproval extends Component {
   };
 
   componentDidMount() {
+    
     this.props.getBranches();
     this.props.getSemesters();
     const { id } = this.props.match.params;
     const pendingData = {
-      facultyId: 1,
       activityDetailId: id,
       status: null,
       branchId: this.state.branchId,
@@ -56,7 +56,6 @@ class PendingApproval extends Component {
   componentWillReceiveProps(){
     const { id } = this.props.match.params;
     const pendingData = {
-      facultyId: 1,
       activityDetailId: id,
       status: null,
       branchId: this.state.branchId,

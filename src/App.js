@@ -38,6 +38,7 @@ import StudentRegistration from "./components/authentication/StudentRegistration
 import VerifyStudent from "./components/student/VerifyStudent";
 import FacultyRegistration from "./components/authentication/FacultyRegistration";
 import VerifyFaculty from "./components/faculty/VerifyFaculty";
+import ActivityDetails from "./components/faculty/ActivityDetails";
 
 const jwt = localStorage.jwtToken;
 
@@ -108,6 +109,7 @@ function App() {
             component={RejectedStudent}
           />
           <Route exact path="/approvedStudents/:id/:forAll" component={ApprovedStudent} />
+          <Route exact path="/activityDetails/:id/:forAll" component={ActivityDetails} />
         </div>
       </Router>
     </Provider>

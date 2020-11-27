@@ -15,6 +15,7 @@ export default function FacultySideNav(props) {
       <Link to={`/pendingApproval/${aid}/${forAll}`}>Pending Approval</Link>
       <Link to={`/rejectedStudents/${aid}/${forAll}`}>Rejected Students</Link>
       <Link to={`/approvedStudents/${aid}/${forAll}`}>Approved Students</Link>
+      <Link to={`/activityDetails/${aid}/${forAll}`}>Activity Details</Link>
     </div>
   );
 }

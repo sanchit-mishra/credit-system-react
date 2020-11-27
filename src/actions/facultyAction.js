@@ -22,7 +22,7 @@ export const addFaculty = (faculty, history) => async (dispatch) => {
 /* Get Faculty */
 export const getFaculty = (id, history) => async (dispatch) => {
   try {
-    const res = await axios.get(`/faculty/${id}`);
+    const res = await axios.get("/faculty");
 
     dispatch({
       type: GET_FACULTY,

@@ -1,11 +1,13 @@
 import {
   GET_ALLOTED_ACTIVITY,
   GET_PENDING_ENROLL_STUDENT,
+  GET_ACTIVITY_DOCS
 } from "../actions/types";
 
 const initialState = {
   facultyActivityAlloted: {},
   pendingEnrollStudent: {},
+  activityDocs: [],
 };
 
 export default function (state = initialState, action) {
@@ -20,6 +22,11 @@ export default function (state = initialState, action) {
         ...state,
         pendingEnrollStudent: action.payload,
       };
+    case GET_ACTIVITY_DOCS:
+      return{
+        ...state,
+        activityDocs : action.payload,
+      }
     default:
       return state;
   }

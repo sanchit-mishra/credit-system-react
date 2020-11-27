@@ -10,6 +10,7 @@ class FacultyTopNav extends Component {
     super();
     this.closeNav = this.closeNav.bind(this);
   }
+
   closeNav() {
     var sidebar = document.getElementById("sideNavbar");
     var mainDiv = document.getElementById("main");
@@ -29,8 +30,10 @@ class FacultyTopNav extends Component {
   }
   
   render() {
+ 
     const firstname = this.props.firstname;
     const lastname = this.props.lastname;
+    console.log(firstname);
     return (
       <div className="topNav">
         <FontAwesomeIcon id="humMenu" icon="bars" onClick={this.closeNav} />
@@ -53,5 +56,6 @@ class FacultyTopNav extends Component {
 FacultyTopNav.propTypes = {
   logout:PropTypes.func.isRequired,
 }
+
 
 export default connect(null,{logout})(FacultyTopNav);

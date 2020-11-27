@@ -6,20 +6,21 @@ import PropTypes from "prop-types";
 import { getCategories } from "../../actions/categoryAction";
 import { getActivities } from "../../actions/activityAction";
 import { enrollActivity } from "../../actions/studentActivityAction";
-//import Dropzone from "react-dropzone-uploader";
-//import "react-dropzone-uploader/dist/styles.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class EnrollActivity extends Component {
   constructor() {
     super();
 
     this.state = {
+      studentId:"",
       activityDetailId: "",
-      certificate: null,
+      certificate: "",
     };
 
-    this.onChangeActivity = this.onChangeActivity.bind(this);
-    this.onChangeFile = this.onChangeFile.bind(this);
+    //this.onChangeActivity = this.onChangeActivity.bind(this);
+    //this.onChangeFile = this.onChangeFile.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -28,30 +29,35 @@ class EnrollActivity extends Component {
     this.props.getActivities();
   }
 
-  onChangeActivity(e) {
-    this.setState({ activityDetailId: e.target.value });
+  // onChangeActivity(e) {
+  //   this.setState({ activityDetailId: e.target.value });
+  // }
+
+  onChange(e) {
+    this.setState({ [e.target.name]: e.target.value});
   }
 
-  onChangeFile(e) {
-    var file = e.target.files[0];
-    console.log(file);
-    this.setState({
-      certificate: file,
-    });
-  }
+  // onChangeFile(e) {
+  //   var file = e.target.files[0];
+  //   console.log(file);
+  //   this.setState({
+  //     certificate: file,
+  //   });
+  // }
 
   onSubmit(e) {
-    // const enrollApplication = {
-    //   activityDetailId: this.state.activityDetailId,
-    //   certificate: this.state.certificate,
-    //   studentId: 10,
-    // };
+    e.preventDefault();
+    const enrollApplication = {
+      activityDetailId: this.state.activityDetailId,
+      certificate: this.state.certificate,
+      studentId: this.props.student.studentId,
+    };
+  
+    // let enrollApplication = new FormData();
+    // enrollApplication.append("certificate", this.state.certificate);
+    // enrollApplication.append("activityDetailId", this.state.activityDetailId);
+    // enrollApplication.append("studentId", 2);
     // console.log(enrollApplication);
-    let enrollApplication = new FormData();
-    enrollApplication.append("certificate", this.state.certificate);
-    enrollApplication.append("activityDetailId", this.state.activityDetailId);
-    enrollApplication.append("studentId", 2);
-    console.log(enrollApplication);
     this.props.enrollActivity(enrollApplication, this.props.history);
   }
 
@@ -79,7 +85,7 @@ class EnrollActivity extends Component {
         <div id="main" className="openmain">
           <TopNav />
           <div className="maindivs" id="pageHeading">
-            <h5>Enroll for Internship</h5>
+            <h5>Enroll for Activity</h5>
           </div>
           <div className="maindivs">
             <form encType="multipart/form-data" onSubmit={this.onSubmit}>
@@ -100,7 +106,7 @@ class EnrollActivity extends Component {
                     id="selectDrp"
                     name="activityDetailId"
                     value={this.state.activityDetailId}
-                    onChange={this.onChangeActivity}
+                    onChange={this.onChange}
                   >
                     <option value="">Select Activity</option>
 
@@ -109,20 +115,33 @@ class EnrollActivity extends Component {
                 </div>
               </div>
               <br />
-              <div className="row">
-                <div className="col-md-6">
-                  <label>Upload your Certificate:</label>
-                  <br />
-
-                  <input
-                    type="file"
-                    name="certificate"
-                    onChange={this.onChangeFile}
-                  />
-                </div>
-              </div>
-
-              <br />
+          <div className="row">
+          <div className="col-md-6">
+            <label for="DocUrl">Enter URL of Cetificate Uploaded on Google Drive:</label>
+            <input
+              type="text"
+              id="DocURL"
+              name="certificate"
+              value={this.state.certificate}
+              onChange={this.onChange}
+              style={{
+                padding: "5px 5px 5px 5px",
+                borderRadius: "3px",
+                border: "1px solid lightgrey",
+                width: "100%",
+                marginTop: "3%",
+              }}
+              placeholder="URL of Google Drive "
+            />
+          </div>
+        </div>
+        <br /><br />
+        <p style={{color: "grey"}}>
+          <FontAwesomeIcon icon="exclamation-circle" /> Make sure that Anyone with
+          Link option is selected for the file whose URL you are uploading!
+        </p>
+        <img src="share.png" height="200" width="300" alt="link sharing note"/>
+        <br />
               <div className="btnDiv">
                 <button className="btn" id="applybtn">
                   Apply
@@ -141,12 +160,14 @@ EnrollActivity.propTypes = {
   getActivities: PropTypes.func.isRequired,
   category: PropTypes.object.isRequired,
   activity: PropTypes.object.isRequired,
+  student: PropTypes.object.isRequired,
   enrollActivity: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   category: state.category,
   activity: state.activity,
+  student: state.student,
 });
 
 export default connect(mapStateToProps, {

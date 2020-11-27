@@ -15,7 +15,7 @@ class Dashboard extends Component {
             <div className="col-md-3">
               <div className="cards" id="activityCards">
                 <h5>
-                  Internship
+                  Activity
                   <FontAwesomeIcon icon="calendar-check" />
                 </h5>
                 <div className="moreinfo">

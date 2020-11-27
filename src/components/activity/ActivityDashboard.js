@@ -34,6 +34,7 @@ class ActivityDashboard extends Component {
       categoryName: this.state.categoryName,
     };
     this.props.addCategory(newCategory, this.props.history);
+    this.turnoffoverlay();
   };
 
   turnoffoverlay = () => {
@@ -52,7 +53,7 @@ class ActivityDashboard extends Component {
       <React.Fragment>
         <Header />
         <div className="container">
-          <h4>Internship</h4>
+          <h4>Activity</h4>
           <br />
           {/* <!--BUTTON TO ADD --> */}
           <div className="row">
@@ -74,7 +75,7 @@ class ActivityDashboard extends Component {
             <div class="col-md-2">
               <Link to="/addActivity">
                 <button class="btn btn-default" id="addactivity">
-                  Add Internship <FontAwesomeIcon icon="calendar-plus" />
+                  Add Activity <FontAwesomeIcon icon="calendar-plus" />
                 </button>
               </Link>
             </div>

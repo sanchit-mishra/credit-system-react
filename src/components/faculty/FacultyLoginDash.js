@@ -9,44 +9,11 @@ import { Link } from "react-router-dom";
 
 class FacultyLoginDash extends Component {
 
-  // constructor(){
-  //   super();
-  //   this.state = {
-  //     id: "",
-  //     firstName: "",
-  //     middleName: "",
-  //     lastName: "",
-  //     DOB: "",
-  //     email: "",
-  //     mobileNo:"",
-  //     erpId: "",
-  //     password: "",
-  //     branchId: ""
-  //   }
-
-  // }
-
   componentDidMount(){
-    const id = this.props.security.user.id;
-    this.props.getFaculty(id);
-    // if(this.props.faculty.faculty){
-    //   //console.log("hi");
-    //   const {id, firstName, middleName, lastName, DOB,email,mobileNo,erpId,password,branchId} = this.props.faculty.faculty;
-    //   this.setState({
-    //     id:id,
-    //     firstName,
-    //     middleName,
-    //     lastName,
-    //     DOB,
-    //     email,
-    //     mobileNo,
-    //     erpId,
-    //     password,
-    //     branchId
-    //   });
+    //const id = this.props.security.user.id;
 
-    //}
-   //this.props.getAllotedActivities(id);
+    this.props.getFaculty();
+    this.props.getAllotedActivities();
 
   }
   
@@ -70,15 +37,16 @@ class FacultyLoginDash extends Component {
           </div>
         </Link>
       ));
-      console.log(this.state);
-      const {firstName, lastName} = this.props.faculty.faculty;
 
+      const {faculty} = this.props.faculty;
+      console.log(faculty[0]);
+    
     return (
       <React.Fragment>
         <FacultyDashSideNav />
         <div id="main" className="openmain">
       
-          <FacultyTopNav firstname={firstName} lastname = {lastName} />
+          <FacultyTopNav firstname={faculty.firstName} lastname={faculty.lastName} />
           <div className="maindivs">
             <div className="row">
               <div className="col-md-9">
