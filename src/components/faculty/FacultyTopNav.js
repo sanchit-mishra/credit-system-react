@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import {logout} from "../../actions/userAction";
 import {connect} from "react-redux";
+import {getFaculty} from "../../actions/facultyAction";
 import PropTypes from "prop-types";
 
 class FacultyTopNav extends Component {

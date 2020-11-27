@@ -5,11 +5,7 @@ export const enrollActivity = (enrollApplication, history) => async (
   dispatch
 ) => {
   try {
-    await axios.post("/student/createActivity", enrollApplication, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    await axios.post("/student/createActivity", enrollApplication);
     history.push("/studentActivityStatus");
     dispatch({
       type: GET_ERROR,

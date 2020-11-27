@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import SideNav from "./StudentSideNav";
 import TopNav from "./StudentTopNav";
+import note from "../../share.png";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { getStudent } from "../../actions/studentAction";
 import { getCategories } from "../../actions/categoryAction";
 import { getActivities } from "../../actions/activityAction";
 import { enrollActivity } from "../../actions/studentActivityAction";
@@ -19,7 +21,6 @@ class EnrollActivity extends Component {
     };
 
     //this.onChangeActivity = this.onChangeActivity.bind(this);
-    //this.onChangeFile = this.onChangeFile.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -27,6 +28,9 @@ class EnrollActivity extends Component {
   componentDidMount() {
     this.props.getCategories();
     this.props.getActivities();
+    const {id} = this.props.security.user;
+    //console.log(id);
+    this.props.getStudent(id);
   }
 
   // onChangeActivity(e) {
@@ -37,27 +41,15 @@ class EnrollActivity extends Component {
     this.setState({ [e.target.name]: e.target.value});
   }
 
-  // onChangeFile(e) {
-  //   var file = e.target.files[0];
-  //   console.log(file);
-  //   this.setState({
-  //     certificate: file,
-  //   });
-  // }
-
   onSubmit(e) {
     e.preventDefault();
     const enrollApplication = {
       activityDetailId: this.state.activityDetailId,
       certificate: this.state.certificate,
-      studentId: this.props.student.studentId,
+      studentId: this.props.student.student.id,
     };
   
-    // let enrollApplication = new FormData();
-    // enrollApplication.append("certificate", this.state.certificate);
-    // enrollApplication.append("activityDetailId", this.state.activityDetailId);
-    // enrollApplication.append("studentId", 2);
-    // console.log(enrollApplication);
+     console.log(enrollApplication);
     this.props.enrollActivity(enrollApplication, this.props.history);
   }
 
@@ -140,7 +132,7 @@ class EnrollActivity extends Component {
           <FontAwesomeIcon icon="exclamation-circle" /> Make sure that Anyone with
           Link option is selected for the file whose URL you are uploading!
         </p>
-        <img src="share.png" height="200" width="300" alt="link sharing note"/>
+        <img src={note} height="200" width="300" alt="link sharing note"/>
         <br />
               <div className="btnDiv">
                 <button className="btn" id="applybtn">
@@ -168,10 +160,12 @@ const mapStateToProps = (state) => ({
   category: state.category,
   activity: state.activity,
   student: state.student,
+  security: state.security,
 });
 
 export default connect(mapStateToProps, {
   getCategories,
   getActivities,
   enrollActivity,
+  getStudent
 })(EnrollActivity);

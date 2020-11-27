@@ -65,6 +65,9 @@ class PendingApproval extends Component {
     this.props.getStudentsEnrolledActivity(pendingData);
   }
 
+  onDisplay(certificateLink){
+    window.open(certificateLink, "_blank");
+  }
 
   onApprove(id){
     //console.log(id);
@@ -159,19 +162,19 @@ class PendingApproval extends Component {
     const { pendingEnrollStudent } = this.props.facultyOperation;
  
     const { Students, docRequired, title } = pendingEnrollStudent;
-  
+
     const PendingStundents =
       Students &&
       Students.map((student) => (
         <tr>
           <td>{student.erpId}</td>
-          <td>{student.name}</td>
+          <td>{student.firstName} {student.lastName}</td>
           <td>{student.studentType}</td>
-          <td>A</td>
-          <td>68</td>
+          <td>{student.division}</td>
+          <td>{student.rollNo}</td>
           <td>
             {docRequired ? (
-              <button className="btn btn-primary mr-1">Display</button>
+              <button className="btn btn-primary mr-1" onClick={this.onDisplay.bind(this, student.Activity.certificate)}>Display</button>
             ) : null}
             <button className="btn btn-success mr-1" onClick={this.onApprove.bind(this,student.Activity.id)} >Approve</button>
             <button className="btn btn-danger mr-1" onClick={this.onReject.bind(this,student.Activity.id)}>Reject</button>

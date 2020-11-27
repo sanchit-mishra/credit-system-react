@@ -67,6 +67,11 @@ class RejectedStudent extends Component {
     this.props.getStudentsEnrolledActivity(approveData);
   }
 
+  onDisplay(certificateLink){
+    window.open(certificateLink, "_blank");
+  }
+
+
   onReject(id){
     //console.log(id);
     const rejectStudent = {
@@ -166,13 +171,13 @@ class RejectedStudent extends Component {
       Students.map((student) => (
         <tr>
           <td>{student.erpId}</td>
-          <td>{student.name}</td>
+          <td>{student.firstName} {student.lastName}</td>
           <td>{student.studentType}</td>
-          <td>A</td>
-          <td>68</td>
+          <td>{student.division}</td>
+          <td>{student.rollNo}</td>
           <td>
             {docRequired ? (
-              <button className="btn btn-primary mr-1">Display</button>
+              <button className="btn btn-primary mr-1" onClick={this.onDisplay.bind(this, student.Activity.certificate)}>Display</button>
             ) : null}
             <button className="btn btn-danger mr-1" onClick={this.onReject.bind(this,student.Activity.id)}>Reject</button>
             <button className="btn btn-info mr-1" onClick={this.onPending.bind(this,student.Activity.id)} >Add to Pending</button>
