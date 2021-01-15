@@ -30,12 +30,12 @@ export default function (state = initialState, action) {
       return{
         ...state,
         students: action.payload,
-      }
+      };
     case GET_VERIFIED_STUDENT:
       return{
         ...state,
         students: action.payload,
-      }
+      };
     case DELETE_STUDENT:
       return {
         ...state,

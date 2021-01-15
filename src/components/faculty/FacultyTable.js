@@ -13,8 +13,8 @@ class FacultyTable extends Component {
   render() {
     const { faculties } = this.props;
     return (
-      <div class="table-responsive">
-        <table class="table table-striped">
+      <div className="table-responsive">
+        <table className="table table-striped">
           <thead>
             <tr>
               <th>Faculty Name</th>

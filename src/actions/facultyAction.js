@@ -90,7 +90,8 @@ export const deleteFaculty = (id) => async (dispatch) => {
 
 export const getVerifiedFaculties = (verifiedStatus) => async dispatch =>{
   try {
-    const res = await axios.get("/faculty/verify",verifiedStatus);
+    const res = await axios.post("/faculty/verify",verifiedStatus);
+    console.log(res.data);
     dispatch({
       type:GET_VERIFIED_FACULTY,
       payload:res.data,
